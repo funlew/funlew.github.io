@@ -27,8 +27,12 @@ navbar:
         标签: /tags
         关于: /about
     # Links to be shown on the right of the navigation bar.
-    # Keep this empty to only show the search box.
-    links: {}
+    # "语言" is the UI language switch button (zh-CN <-> en), handled by
+    # source/js/lang-switch.js. Remove it to get rid of the button.
+    links:
+        语言:
+            icon: fas fa-language
+            url: '#'
 # Page footer configurations
 footer:
     # Copyright text
