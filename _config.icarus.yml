@@ -177,7 +177,7 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
-            gratisography: https://gratisography.com/
+            Gratisography: https://gratisography.com/
             Icarus: https://ppoffice.github.io/hexo-theme-icarus/
     # Categories widget configurations
     -
