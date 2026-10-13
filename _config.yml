@@ -96,7 +96,6 @@ pagination_dir: page
 include:
   - _about/**
   - _attach/**
-  - _static/**
 exclude:
 ignore:
 
