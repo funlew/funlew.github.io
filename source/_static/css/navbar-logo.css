@@ -1,0 +1,13 @@
+/* Avatar icon shown in front of the navbar logo text.
+ * Done in CSS on purpose: the theme's "logo" option is text-only here, and
+ * the footer reuses the same option, so it keeps showing plain text. */
+.navbar-brand .navbar-logo::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: url("/_static/img/avatar.jpg") center / cover no-repeat;
+}
