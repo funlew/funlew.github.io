@@ -129,9 +129,9 @@ widgets:
             知乎:
                 icon: icon-sns icon-sns-zhihu
                 url: https://www.zhihu.com/
-            抖音:
-                icon: icon-sns icon-sns-douyin
-                url: https://www.douyin.com/
+            微信公众号:
+                icon: icon-sns icon-sns-wechat
+                url: https://mp.weixin.qq.com/
             Discord:
                 icon: icon-sns icon-sns-discord
                 url: https://discord.com/
@@ -147,9 +147,9 @@ widgets:
             Facebook:
                 icon: icon-sns icon-sns-facebook
                 url: https://www.facebook.com/
-            bilibili:
-                icon: icon-sns icon-sns-bilibili
-                url: https://www.bilibili.com/
+            语雀:
+                icon: icon-sns icon-sns-yuque
+                url: https://www.yuque.com/
             小红书:
                 icon: icon-sns icon-sns-xiaohongshu
                 url: https://www.xiaohongshu.com/

@@ -53,9 +53,10 @@
         '更新': 'Updated',
         '微博': 'Weibo',
         '知乎': 'Zhihu',
-        '抖音': 'Douyin',
+        '微信公众号': 'WeChat',
         '掘金': 'Juejin',
         '豆瓣': 'Douban',
+        '语雀': 'Yuque',
         '小红书': 'Xiaohongshu'
     };
 
