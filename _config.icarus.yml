@@ -123,9 +123,6 @@ widgets:
             抖音:
                 icon: icon-sns icon-sns-douyin
                 url: https://www.douyin.com/
-            简书:
-                icon: icon-sns icon-sns-jianshu
-                url: https://www.jianshu.com/
             Discord:
                 icon: icon-sns icon-sns-discord
                 url: https://discord.com/
