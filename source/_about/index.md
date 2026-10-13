@@ -1,6 +1,7 @@
 ---
 title: 关于
 date: 2026-10-13 22:40:00
+permalink: /about/
 comment: false
 ---
 

@@ -89,7 +89,14 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
+## Hexo ignores files and folders whose names start with "_", so the
+## underscore folders below have to be included explicitly.
+## The patterns must cover the files inside the folders (glob), not just
+## the folder names.
 include:
+  - _about/**
+  - _attach/**
+  - _static/**
 exclude:
 ignore:
 
