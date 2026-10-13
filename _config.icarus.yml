@@ -40,8 +40,17 @@ footer:
     # so this field is only for extra copyright notes.
     copyright: ''
     # Links to be shown on the right of the footer section.
-    # Keep this empty to hide the icon buttons (GitHub, RSS, ...).
-    links: {}
+    # The names become the tooltips of the icon buttons.
+    links:
+        Creative Commons:
+            icon: fab fa-creative-commons
+            url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+        GitHub:
+            icon: fab fa-github
+            url: https://github.com/funlew
+        RSS:
+            icon: fas fa-rss
+            url: /atom.xml
 # Article related configurations
 article:
     # Code highlight settings
