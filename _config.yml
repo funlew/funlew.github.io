@@ -64,6 +64,10 @@ index_generator:
   per_page: 10
   order_by: -date
 
+# Table of contents
+## Icarus renders its TOC widget on posts and pages only when this is true
+toc: true
+
 # Category & Tag
 default_category: uncategorized
 category_map:
