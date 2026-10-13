@@ -54,7 +54,10 @@
         '微博': 'Weibo',
         '知乎': 'Zhihu',
         '抖音': 'Douyin',
-        '简书': 'Jianshu'
+        '简书': 'Jianshu',
+        '掘金': 'Juejin',
+        '豆瓣': 'Douban',
+        '小红书': 'Xiaohongshu'
     };
 
     var MONTHS = {

@@ -132,6 +132,21 @@ widgets:
             Twitter:
                 icon: icon-sns icon-sns-twitter
                 url: https://twitter.com/
+            掘金:
+                icon: icon-sns icon-sns-juejin
+                url: https://juejin.cn/
+            豆瓣:
+                icon: icon-sns icon-sns-douban
+                url: https://www.douban.com/
+            Facebook:
+                icon: icon-sns icon-sns-facebook
+                url: https://www.facebook.com/
+            bilibili:
+                icon: icon-sns icon-sns-bilibili
+                url: https://www.bilibili.com/
+            小红书:
+                icon: icon-sns icon-sns-xiaohongshu
+                url: https://www.xiaohongshu.com/
             RSS:
                 icon: fas fa-rss
                 url: /atom.xml
