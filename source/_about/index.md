@@ -15,8 +15,4 @@ comment: false
 - 开源项目与工具链
 - 阅读与生活随笔
 
-## 关于本站
-
-本站使用 [Hexo](https://hexo.io) 搭建，主题为 [Icarus](https://github.com/ppoffice/hexo-theme-icarus)（开发分支），托管在 GitHub Pages 上。
-
 如果想进一步交流，欢迎通过 [GitHub](https://github.com/funlew) 找到我。
