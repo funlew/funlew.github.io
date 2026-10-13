@@ -50,7 +50,11 @@
         '(无内容预览)': '(No preview)',
         '语言': 'Language',
         '发表': 'Posted',
-        '更新': 'Updated'
+        '更新': 'Updated',
+        '微博': 'Weibo',
+        '知乎': 'Zhihu',
+        '抖音': 'Douyin',
+        '简书': 'Jianshu'
     };
 
     var MONTHS = {

@@ -106,11 +106,32 @@ widgets:
         gravatar: 
         # URL or path for the follow button
         follow_link: https://github.com/funlew
-        # Links to be shown on the bottom of the profile widget
+        # Links to be shown on the bottom of the profile widget.
+        # "icon-sns-*" classes are inline brand icons defined in
+        # source/css/social-icons.css (no external icon font needed).
+        # Replace the URLs below with your own profile pages.
         social_links:
             GitHub:
                 icon: fab fa-github
                 url: https://github.com/funlew
+            微博:
+                icon: icon-sns icon-sns-weibo
+                url: https://weibo.com/
+            知乎:
+                icon: icon-sns icon-sns-zhihu
+                url: https://www.zhihu.com/
+            抖音:
+                icon: icon-sns icon-sns-douyin
+                url: https://www.douyin.com/
+            简书:
+                icon: icon-sns icon-sns-jianshu
+                url: https://www.jianshu.com/
+            Discord:
+                icon: icon-sns icon-sns-discord
+                url: https://discord.com/
+            Twitter:
+                icon: icon-sns icon-sns-twitter
+                url: https://twitter.com/
             RSS:
                 icon: fas fa-rss
                 url: /atom.xml
