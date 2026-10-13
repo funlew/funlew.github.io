@@ -26,11 +26,9 @@ navbar:
         分类: /categories
         标签: /tags
         关于: /about
-    # Links to be shown on the right of the navigation bar
-    links:
-        GitHub:
-            icon: fab fa-github
-            url: https://github.com/funlew
+    # Links to be shown on the right of the navigation bar.
+    # Keep this empty to only show the search box.
+    links: {}
 # Page footer configurations
 footer:
     # Copyright text
