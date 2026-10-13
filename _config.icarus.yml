@@ -127,7 +127,7 @@ widgets:
                 icon: icon-sns icon-sns-discord
                 url: https://discord.com/
             Twitter:
-                icon: icon-sns icon-sns-twitter
+                icon: icon-sns icon-sns-x
                 url: https://twitter.com/
             掘金:
                 icon: icon-sns icon-sns-juejin
