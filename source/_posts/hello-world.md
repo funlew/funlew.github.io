@@ -2,6 +2,7 @@
 title: 你好，世界
 date: 2026-10-13 22:00:00
 cover: /_attach/hello-world-cover.jpg
+thumbnail: /_attach/hello-world-cover.jpg
 categories:
   - 随笔
 tags:
