@@ -37,14 +37,9 @@ footer:
     # The theme already prints "© <year> <author>" in the footer,
     # so this field is only for extra copyright notes.
     copyright: ''
-    # Links to be shown on the right of the footer section
-    links:
-        GitHub:
-            icon: fab fa-github
-            url: https://github.com/funlew
-        RSS:
-            icon: fas fa-rss
-            url: /atom.xml
+    # Links to be shown on the right of the footer section.
+    # Keep this empty to hide the icon buttons (GitHub, RSS, ...).
+    links: {}
 # Article related configurations
 article:
     # Code highlight settings
