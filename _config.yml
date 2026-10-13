@@ -109,7 +109,8 @@ theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+## The site is built and deployed to GitHub Pages by GitHub Actions
+## (.github/workflows/deploy.yml) on every push to main, so no local
+## git deployer is configured here.
 deploy:
-  type: git
-  repo: https://github.com/funlew/funlew.github.io.git
-  branch: gh-pages
+  type: ''
