@@ -111,7 +111,7 @@ top: false
 | --- | --- | --- |
 | `title` | 是 | 文章标题。首页列表和文章页大标题都用它 |
 | `date` | 是 | 发布时间，格式 `YYYY-MM-DD HH:mm:ss`。影响永久链接、排序、RSS |
-| `categories` | 否 | 分类数组，展示在文章页头部并生成 `/categories/` 页面 |
+| `categories` | 否 | 分类数组，展示在文章页头部并生成 `/categories/` 页面。层级写法见下方「层级分类」 |
 | `tags` | 否 | 标签数组，生成 `/tags/` 页面 |
 | `author` | 否 | 不填则取站点配置的 `funlew` |
 | `cover` | 否 | 首页列表的 7:3 大封面图，不填则无图 |
@@ -121,6 +121,41 @@ top: false
 | `permalink` | 否 | 覆盖默认永久链接，独立页面常用（参考 `source/_about/index.md`） |
 
 `cover` 和 `thumbnail` 是两个独立字段，引用同一张图也可以。
+
+### 层级分类
+
+分类最多支持三层（侧栏「分类」组件的默认深度）。二级分类要写成**数组对**，而不是嵌套对象：
+
+```yaml
+categories:
+  - [网络安全, 赏金SRC]
+  - [网络安全, 信息搜集]
+```
+
+渲染效果是「网络安全」下挂「赏金SRC」和「信息搜集」，父分类的计数为层级条目数。
+
+**不要用嵌套对象**，那样分类名会变成字面量 `[object Object]`，并且在站点上生成一个名为 `categories/object-Object/` 的可用页面：
+
+```yaml
+# 错误
+categories:
+  - 网络安全:
+      - 赏金SRC
+```
+
+原因是 Hexo 解析 `categories` 时只对数组走层级分支，其余取值一律按字符串处理（`hexo/dist/plugins/processor/post.js`）：
+
+```js
+cats = cats.filter(cat => {
+    return Array.isArray(cat) || (cat != null && cat !== '');
+}).map(cat => {
+    return Array.isArray(cat) ? removeEmptyTag(cat) : `${cat}`;
+});
+```
+
+对象落到 `` `${cat}` `` 上就被字符串化了。本站的「网络安全 / 赏金SRC / 信息搜集」即按上面的数组对写法预留，写第一篇相关文章时填进去，左侧就会出现该层级。
+
+**分类由文章驱动**：没有任何文章使用的分类不会出现在侧栏，所以建分类的实质是给文章挂分类，而不是单独创建。
 
 ---
 
