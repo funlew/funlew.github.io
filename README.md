@@ -1,11 +1,3 @@
-# funlew 的博客
-
-个人博客站点，源码即仓库：[funlew/funlew.github.io](https://github.com/funlew/funlew.github.io)
-
-线上地址：https://funlew.github.io
-
-基于 [Hexo](https://hexo.io/) 8 与 [Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题构建，push 到 `main` 后由 GitHub Actions 自动部署到 GitHub Pages。
-
 ---
 
 ## 文档
