@@ -54,6 +54,22 @@ git checkout dev-fix
 
 ## 三、日常开发流程
 
+### 仓库目录
+
+```
+docs/            项目文档，不是博客内容
+scripts/         注入样式与脚本、包装主题生成器
+scaffolds/       hexo new 使用的文章模板
+source/          博客内容（_posts 文章、_attach 配图、_static 资源、_about 独立页）
+themes/icarus/   Icarus 主题源码（纳入版本管理，不是 submodule）
+```
+
+`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `_config.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
+
+**`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。新增文档请遵守，并同步更新 `README.md` 的索引以及文档之间的互链。
+
+### 日常步骤
+
 ```bash
 git checkout dev-fix          # 确保在工作分支上
 npm run server                # 启动本地预览 http://localhost:4000
