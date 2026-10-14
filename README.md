@@ -1,8 +1,8 @@
 ## 文档
 
-| 文档 | 内容 |
+| 标题 | 内容 |
 | --- | --- |
-| [发布文章流程](./docs/_publishing-guide.md) | 写一篇新文章并让它上线：目录约定、front-matter 字段、正文写法、本地预览、发布与回滚 |
+| [发布流程](./docs/_publishing-guide.md) | 写一篇新文章并让它上线：目录约定、front-matter 字段、正文写法、本地预览、发布与回滚 |
 | [开发流程](./docs/_development-workflow.md) | 分支模型（`dev-fix` 工作分支 / `main` 部署分支）、提交规范、验证要求、分支保护、依赖升级 |
 
 ---
