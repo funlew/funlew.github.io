@@ -5,3 +5,13 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 20
+  ignore:
+    # hexo-theme-icarus checks these against its own package.json before
+    # generating and calls process.exit() when a version does not satisfy it
+    # (themes/icarus/include/dependency.js), so the site cannot build on newer
+    # releases. Upgrade them only together with a theme update.
+    - dependency-name: "bulma-stylus"
+    - dependency-name: "hexo-pagination"
+    - dependency-name: "hexo-util"
+    - dependency-name: "inferno"
+    - dependency-name: "inferno-create-element"
