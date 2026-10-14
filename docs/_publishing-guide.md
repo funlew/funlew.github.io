@@ -220,7 +220,7 @@ git push
 
 通常 1～2 分钟完成。访问 `https://funlew.github.io` 确认；仓库 **Actions** 标签页可查看构建日志，若 Pages 未更新，在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
 
-也支持在 Actions 页面手动触发 `workflow_dispatch`。分支模型与回滚方式详见 [开发流程](./开发流程.md)。
+也支持在 Actions 页面手动触发 `workflow_dispatch`。分支模型与回滚方式详见 [开发流程](./_development-workflow.md)。
 
 ---
 
