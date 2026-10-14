@@ -171,14 +171,18 @@ widgets:
         # Maximum level of headings to show (1-6)
         depth: 3
     # Recommendation links widget configurations
+    # A value that is a URL string is rendered as a single entry. A mapping
+    # value becomes a second level heading, and its keys become the entries
+    # nested under that heading, which is how "图片素材" groups Gratisography.
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: links
         # Names and URLs of the sites
         links:
-            Gratisography: https://gratisography.com/
             Icarus: https://ppoffice.github.io/hexo-theme-icarus/
+            图片素材:
+                Gratisography: https://gratisography.com/
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
