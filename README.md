@@ -1,0 +1,78 @@
+# funlew 的博客
+
+个人博客站点，源码即仓库：[funlew/funlew.github.io](https://github.com/funlew/funlew.github.io)
+
+线上地址：https://funlew.github.io
+
+基于 [Hexo](https://hexo.io/) 8 与 [Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题构建，push 到 `main` 后由 GitHub Actions 自动部署到 GitHub Pages。
+
+---
+
+## 文档
+
+| 文档 | 内容 |
+| --- | --- |
+| [发布文章流程](./docs/_publishing-guide.md) | 写一篇新文章并让它上线：目录约定、front-matter 字段、正文写法、本地预览、发布与回滚 |
+| [开发流程](./docs/_development-workflow.md) | 分支模型（`dev-fix` 工作分支 / `main` 部署分支）、提交规范、验证要求、分支保护、依赖升级 |
+
+---
+
+## 快速开始
+
+需要 Node.js 22（与 CI 一致）：
+
+```bash
+git clone https://github.com/funlew/funlew.github.io.git
+cd funlew.github.io
+git checkout dev-fix
+npm ci
+```
+
+日常开发：
+
+```bash
+npm run server    # 本地预览 http://localhost:4000
+npm run clean     # 清除 public/ 与 db.json
+npm run build     # 生成静态站点到 public/
+```
+
+`npm run deploy` 在本地无效，站点未配置 deployer，发布一律通过 `main` 的 Actions 完成。
+
+---
+
+## 仓库结构
+
+```
+docs/            项目文档
+scripts/         注入样式与脚本、包装主题生成器
+scaffolds/       hexo new 使用的文章模板
+source/          博客内容
+themes/icarus/   Icarus 主题源码
+```
+
+写作只需关注 `source/`：
+
+| 目录 | 用途 |
+| --- | --- |
+| `source/_posts/` | 文章正文，文件名会成为永久链接 |
+| `source/_attach/` | 文章配图 |
+| `source/_static/` | favicon、头像、自定义 CSS/JS |
+| `source/_about/` | 关于页等独立页面 |
+
+这些目录的下划线是 Hexo 的要求（否则会被忽略），已在 `_config.yml` 的 `include` 中放行。`docs/` 同理采用 `_` 前缀表示「不是博客内容」，详见 [开发流程](./docs/_development-workflow.md)。
+
+---
+
+## 技术栈
+
+Hexo 8.1.2 · Icarus 6.1.1 · Inferno（JSX 渲染）· Marked · Stylus · highlight.js
+
+功能：Insight 站内搜索、PJAX、目录、代码高亮与复制、图库、Atom RSS、动画与进度条
+
+---
+
+## 许可
+
+站点内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
+
+主题代码版权归 [ppoffice](https://github.com/ppoffice/hexo-theme-icarus) 所有，以其 MIT 许可为准。

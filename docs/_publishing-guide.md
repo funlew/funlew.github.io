@@ -201,23 +201,26 @@ npm run clean && npm run build
 
 ## 七、发布
 
-提交并推送到 `main` 分支，GitHub Actions 会自动构建并部署：
+文章先提交到工作分支 `dev-fix`（仓库规则禁止直推 `main`）：
 
 ```bash
+git checkout dev-fix
 git add source/_posts/我的新文章.md source/_attach/my-cover.jpg
 git commit -m "post: add 我的新文章"
-git push origin main
+git push
 ```
+
+推送后打开 https://github.com/funlew/funlew.github.io/compare/main...dev-fix 创建 Pull Request，合并到 `main` 即触发部署。
 
 部署流程（`.github/workflows/deploy.yml`）：
 
 ```
-push main → npm ci → hexo clean && hexo generate → 上传 public/ → 部署到 GitHub Pages
+合并进 main → npm ci → hexo clean && hexo generate → 上传 public/ → 部署到 GitHub Pages
 ```
 
 通常 1～2 分钟完成。访问 `https://funlew.github.io` 确认；仓库 **Actions** 标签页可查看构建日志，若 Pages 未更新，在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
 
-也支持在 Actions 页面手动触发 `workflow_dispatch`。
+也支持在 Actions 页面手动触发 `workflow_dispatch`。分支模型与回滚方式详见 [开发流程](./_development-workflow.md)。
 
 ---
 
