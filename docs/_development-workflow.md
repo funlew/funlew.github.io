@@ -249,7 +249,7 @@ Rules 部分只勾这两项：
 
 ## 八、依赖更新
 
-`.github/dependabot.yml` 每日检查 npm 依赖，会自动开 PR 分支。
+`.github/dependabot.yml` 每周检查 npm 依赖，会自动开 PR 分支。
 
 当前积压了几个大版本升级，合并前务必本地验证：
 
