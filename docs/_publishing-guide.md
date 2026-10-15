@@ -35,6 +35,39 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 | `source/_static/` | 站点级静态资源：favicon、头像、自定义 CSS/JS |
 | `source/_about/` | 关于页等独立页面 |
 
+### 双语页面（关于页）
+
+站点只有一份 HTML，构建语言固定为 `zh-CN`；界面语言由导航栏的语言按钮在浏览器里切换（`source/_static/js/lang-switch.js`）。需要中英双语的**页面内容**，就把两种语言写进同一个文件，各占一个语言块：
+
+```markdown
+<div class="lang-block" data-lang="zh-CN" lang="zh-CN">
+
+## 关于我
+
+中文内容……
+
+</div>
+
+<div class="lang-block" data-lang="en" lang="en">
+
+## About Me
+
+English content...
+
+</div>
+```
+
+规则：
+
+- **`<div>` 与正文之间必须空行**，否则 marked 会把块内的内容当 HTML 原样输出，markdown 不再渲染
+- 样式表 `source/_static/css/i18n.css`（由 `scripts/i18n-inject.js` 注入）按 `<html lang>` 只显示当前语言的那一块，而 `lang-switch.js` 切换语言时会同步这个属性——所以**不用改任何脚本**
+- 块默认隐藏、只显示匹配语言的那一块；没有 `<html lang>` 时回落到 `zh-CN` 块，保证文字不会消失
+- 新增语种时复制一个块改 `data-lang` 即可
+- **页面 front-matter 要写 `toc: false`**：目录组件是构建期按正文里的**全部**标题生成的，两种语言的二级标题会各占一条。关于页即如此（站点默认 `toc: true`）
+- 页面标题仍用中文写 front-matter 的 `title`，英文由 `lang-switch.js` 的词表翻译；新页面的标题要跟随语言切换，需要在词表 `DICT` 里补一条
+
+参考文件：`source/_about/index.md`。
+
 ### 分类目录结构
 
 `_posts` 与 `_attach` 都按文章分类建目录，**目录名用分类的英文翻译**，层级与分类层级一致：
@@ -236,6 +269,7 @@ top: false
 | `top` | 否 | `true` 时置顶，标题前显示图钉图标 |
 | `updated` | 否 | 与 `date` 不同时，文章页额外显示更新时间 |
 | `permalink` | 否 | 覆盖默认永久链接，独立页面常用（参考 `source/_about/index.md`） |
+| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`_config.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭（双语页面必须关，见「双语页面（关于页）」） |
 
 `cover` 和 `thumbnail` 是两个独立字段，引用同一张图也可以。
 
