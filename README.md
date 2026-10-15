@@ -7,6 +7,18 @@
 
 ---
 
+## 📰 最新文章
+
+| 标题 | 分类 | 日期 |
+| --- | --- | --- |
+| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/2026/10/15/subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
+| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026/10/14/email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
+| 🔗 [Hello，world！](https://funlew.github.io/2026/10/13/hello-world/) | 随笔 | 2026-10-13 |
+
+> ℹ️ 最新一篇（资产发现指南）目前只存在于 `dev-fix` 分支，合入 `main` 后才会出现在博客首页。
+
+---
+
 ## 🚀 快速开始
 
 需要 Node.js 22（与 CI 一致）：
