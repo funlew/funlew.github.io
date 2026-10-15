@@ -1,0 +1,89 @@
+# English build of the site.
+#
+# Usage: hexo generate --config config/_config.zh.yml,config/_config.en.yml
+# (both builds, the root language page and the redirects are produced by
+# `npm run build`, see tools/build.mjs)
+#
+# Only the keys that differ from the Chinese build live here; everything else is
+# inherited from config/_config.zh.yml, which Hexo merges this file on top of.
+# The theme configuration stays in the root as _config.icarus.yml, where Hexo
+# looks for the secondary config of the theme.
+
+i18n_lang: en
+language: en
+url: https://funlew.github.io/en
+root: /en/
+source_dir: .build/en
+public_dir: public/en
+
+title: funlew's blog
+subtitle: 'stay hungry, stay foolish'
+description: 'Notes on technology, open source and everyday life'
+keywords: blog,technology,open source,unix,life
+
+# The English post front matter writes categories and tags as "Information
+# Gathering", "Daily Notes", ... Lower casing the slugs keeps the URLs clean
+# (/en/categories/information-gathering/, /en/tags/daily-notes/).
+filename_case: 1
+
+# UI text of the theme. The labels in _config.icarus.yml are Chinese, and they
+# are plain config values rather than theme translations, so the English wording
+# is listed here: sections are replaced as a whole, widgets are addressed by type
+# (the other widget options stay as configured in _config.icarus.yml).
+i18n_theme:
+    navbar:
+        menu:
+            Home: /
+            Archives: /archives
+            Categories: /categories
+            Tags: /tags
+            About: /about
+        links:
+            Language:
+                icon: fas fa-language
+                url: '#'
+    widgets:
+        profile:
+            social_links:
+                GitHub:
+                    icon: fab fa-github
+                    url: https://github.com/funlew
+                Weibo:
+                    icon: icon-sns icon-sns-weibo
+                    url: https://weibo.com/
+                Zhihu:
+                    icon: icon-sns icon-sns-zhihu
+                    url: https://www.zhihu.com/
+                WeChat:
+                    icon: icon-sns icon-sns-wechat
+                    url: https://mp.weixin.qq.com/
+                Discord:
+                    icon: icon-sns icon-sns-discord
+                    url: https://discord.com/
+                Twitter:
+                    icon: icon-sns icon-sns-x
+                    url: https://twitter.com/
+                Juejin:
+                    icon: icon-sns icon-sns-juejin
+                    url: https://juejin.cn/
+                Douban:
+                    icon: icon-sns icon-sns-douban
+                    url: https://www.douban.com/
+                Facebook:
+                    icon: icon-sns icon-sns-facebook
+                    url: https://www.facebook.com/
+                Yuque:
+                    icon: icon-sns icon-sns-yuque
+                    url: https://www.yuque.com/
+                Xiaohongshu:
+                    icon: icon-sns icon-sns-xiaohongshu
+                    url: https://www.xiaohongshu.com/
+                RSS:
+                    icon: fas fa-rss
+                    url: /atom.xml
+        categories:
+            # Category names as written in the posts, see the CATEGORIES table in
+            # docs/_publishing-guide.md.
+            customOrder:
+                - Cybersecurity
+                - Daily Notes

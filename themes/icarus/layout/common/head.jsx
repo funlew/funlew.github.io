@@ -163,6 +163,13 @@ module.exports = class extends Component {
                 images={structuredImages} /> : null}
 
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
+            {/* Alternates of the bilingual site: this page, its translation in the
+                other language and the language selection page. The helpers come
+                from the site (scripts/i18n.js) and are optional, the theme works
+                without them. */}
+            {helper.i18n_alternates ? helper.i18n_alternates(page).map(link => <link
+                rel="alternate" hreflang={link.lang} href={link.href} data-i18n-path={link.path} />) : null}
+            {helper.i18n_home ? <meta name="i18n-home" content={helper.i18n_home()} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             <link rel="stylesheet" href={iconcdn()} />

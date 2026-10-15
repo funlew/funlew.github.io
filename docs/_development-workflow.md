@@ -57,14 +57,18 @@ git checkout dev-fix
 ### 仓库目录
 
 ```
-docs/            项目文档，不是博客内容
-scripts/         注入样式与脚本、包装主题生成器
-scaffolds/       hexo new 使用的文章模板
-source/          博客内容（_posts 文章、_attach 配图、_static 资源、_about 独立页）
-themes/icarus/   Icarus 主题源码（纳入版本管理，不是 submodule）
+docs/               项目文档，不是博客内容
+scripts/            注入样式与脚本、包装主题生成器、双语构建支持（i18n.js）
+config/             两种语言的站点配置（_config.zh.yml、_config.en.yml），由 --config 显式传入
+scaffolds/          hexo new 使用的文章模板
+source/             博客内容（_posts 文章、_attach 配图、_static 资源、_about 独立页）
+themes/icarus/      Icarus 主题源码（纳入版本管理，不是 submodule）
+tools/              构建脚手架：prepare-i18n.mjs 拆分双语源树，build.mjs 串联两次生成
+.build/             双语构建的中间产物（每次构建重新生成，已 gitignore，不要手改）
+_config.icarus.yml  主题配置，固定在站点根目录：Hexo 只从根目录加载 _config.[theme].yml
 ```
 
-`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `_config.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
+`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `config/_config.zh.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
 
 **`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。新增文档请遵守，并同步更新 `README.md` 的索引以及文档之间的互链。
 
@@ -72,10 +76,10 @@ themes/icarus/   Icarus 主题源码（纳入版本管理，不是 submodule）
 
 ```bash
 git checkout dev-fix          # 确保在工作分支上
-npm run server                # 启动本地预览 http://localhost:4000
-# ...编辑文件，预览会自动刷新...
-npm run clean                # 清除 public/ 与 db.json
-npm run build                # 完整构建，验证生产环境无报错
+npm run server                # 中文站预览 http://localhost:4000/zh/
+npm run server:en             # 英文站预览 http://localhost:4001/en/（另开一个终端）
+# ...编辑 source/ 下的文件，两个预览都会自动重新拆分并刷新...
+npm run build                 # 完整构建（含双语交叉检查），验证生产环境无报错
 git add -A
 git commit -m "feat: ..."
 git push                     # 直接推送到 dev-fix
@@ -87,13 +91,15 @@ git push                     # 直接推送到 dev-fix
 
 | 改动位置 | 最低验证 |
 | --- | --- |
-| `source/_posts/` 文章内容 | `npm run server` 看渲染结果 |
-| `_config.yml` / `_config.icarus.yml` | `hexo clean` + 完整构建 |
-| `scripts/` 下的脚本 | `hexo clean` + 完整构建 + 看构建日志 |
-| `themes/icarus/` 主题源码 | `hexo clean` + 完整构建 |
-| 依赖版本（`package.json`） | `hexo clean` + 完整构建 |
+| `source/_posts/` 文章内容 | `npm run server` / `npm run server:en` 看两种语言的渲染结果 |
+| `config/_config.zh.yml` / `config/_config.en.yml` / `_config.icarus.yml` | `npm run build` 完整构建 |
+| `scripts/` 下的脚本 | `npm run clean` + `npm run build` + 看构建日志 |
+| `tools/` 下的构建脚本 | `npm run clean` + `npm run build`，并确认 `.build/` 与 `public/` 结构 |
+| `themes/icarus/` 主题源码 | `npm run clean` + `npm run build` |
+| 双语内容（`lang-block` / `*_en` 字段） | 两个预览端口互相点语言按钮，确认跳转与内容都正确 |
+| 依赖版本（`package.json`） | `npm run clean` + `npm run build` |
 
-**`scripts/` 目录务必用 `hexo clean` 验证。** 该目录的脚本之间、以及脚本与主题脚本之间存在加载顺序依赖（见下文），残留的 `db.json` 缓存会掩盖问题。
+**`scripts/` 目录务必用 `npm run clean` 验证。** 该目录的脚本之间、以及脚本与主题脚本之间存在加载顺序依赖（见下文），`public/` 与残留的 `db.json` 缓存会掩盖问题。
 
 ### 依赖加载顺序
 
@@ -105,7 +111,24 @@ bluebird.filter([ctx.theme_script_dir, ctx.script_dir], ...)
 
 即**主题 `scripts/` 先加载，项目 `scripts/` 后加载**。因此项目脚本在加载时能拿到主题已注册的扩展，`scripts/search-index-filter.js` 正是利用这一点来包装主题注册的 `insight` generator。
 
+`scripts/i18n.js` 则依赖**过滤器**的执行顺序：它用 `template_locals` 把 `config/_config.en.yml` 里 `i18n_theme` 的英文界面文案覆盖到页面 locals 上，而这份 locals 是主题的同名过滤器（默认优先级 10）拼出来的，所以它注册在优先级 20。改这一段时注意别把优先级去掉，否则英文站会用回中文菜单。
+
 如果将来新增脚本依赖这个顺序，请在文件注释里写明。
+
+### 双语的构建流程
+
+`npm run build` 实际上是三步（见 `tools/build.mjs`）：
+
+```
+tools/prepare-i18n.mjs   source/ → .build/zh、.build/en（拆分语言、挑出 *_en 字段、生成 _data/i18n.json）
+hexo generate            .build/zh → public/zh（config/_config.zh.yml），.build/en → public/en（+config/_config.en.yml）
+tools/build.mjs 收尾      public/index.html 语言选择页、旧地址重定向、两种语言的链接交叉检查
+```
+
+两点容易踩坑：
+
+- **不要在 `source/` 之外手写语言相关内容**：`lang-block` 与 `*_en` 字段是唯一入口，`.build/` 会被覆盖
+- **改 `source/` 之后必须重跑 `prepare-i18n.mjs`**（两个 `npm run server` 已经内置了监听，直接改文件即可）
 
 ---
 

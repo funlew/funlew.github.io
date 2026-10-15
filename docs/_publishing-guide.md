@@ -2,6 +2,8 @@
 
 本文档说明 funlew 博客（Hexo + Icarus）从本地写稿到线上可见的完整流程。
 
+站点是**中英双语**的：一次构建生成两份完整站点，中文在 `https://funlew.github.io/zh/`，英文在 `https://funlew.github.io/en/`，两种语言的内容写在同一个源文件里，构建时再拆分（见「双语内容」）。
+
 ---
 
 ## 一、环境准备
@@ -19,10 +21,21 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 
 | 命令 | 作用 |
 | --- | --- |
-| `npm run server` | 启动本地预览服务（默认 http://localhost:4000） |
-| `npm run clean` | 清除 `public/` 与缓存数据库 `db.json` |
-| `npm run build` | 生成静态站点到 `public/` |
+| `npm run server` | 预览中文站（http://localhost:4000/zh/） |
+| `npm run server:en` | 预览英文站（http://localhost:4001/en/） |
+| `npm run prepare:i18n` | 只把 `source/` 拆成 `.build/zh`、`.build/en`（两个预览服务会自动执行） |
+| `npm run clean` | 清除 `public/`、`.build/` 与缓存数据库 `db.json` |
+| `npm run build` | 完整构建：拆分双语 → 生成 `/zh/` 与 `/en/` → 语言选择页 → 旧链接重定向 |
 | `npm run deploy` | **本地无效**，站点未配置 deployer，发布只走 Actions |
+
+构建产物结构（`public/` 即整个站点）：
+
+```
+public/index.html   根路径的语言选择页（按上次选择 + 浏览器语言跳转）
+public/zh/**        中文站（完整站点）
+public/en/**        英文站（完整站点）
+public/about/**     线上旧地址的重定向页，跳转到 /zh/ 下同名页面
+```
 
 ---
 
@@ -35,9 +48,13 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 | `source/_static/` | 站点级静态资源：favicon、头像、自定义 CSS/JS |
 | `source/_about/` | 关于页等独立页面 |
 
-### 双语页面（关于页）
+### 双语内容（中文 / 英文）
 
-站点只有一份 HTML，构建语言固定为 `zh-CN`；界面语言由导航栏的语言按钮在浏览器里切换（`source/_static/js/lang-switch.js`）。需要中英双语的**页面内容**，就把两种语言写进同一个文件，各占一个语言块：
+中文站 `/zh/` 和英文站 `/en/` 是两次独立的构建（`config/_config.zh.yml` 与 `config/_config.en.yml`），各自有首页、归档、分类、标签、搜索索引和 RSS，因此**两种语言都能被搜索引擎单独收录**。导航栏右上角的语言按钮打开同一页面的另一种语言版本；页面没有译文时回落到该语言的首页。
+
+两种语言的**源文件是同一份**，构建时由 `tools/prepare-i18n.mjs` 拆分：正文各占一个 `lang-block`，元数据用 `*_en` 字段。没有英文版的文件只进中文站，等译文补齐后自动出现在英文站（`npm run build` 会列出「还没有英文版」的文件）。
+
+正文（`source/_about/**`、`source/_posts/**` 都适用）：
 
 ```markdown
 <div class="lang-block" data-lang="zh-CN" lang="zh-CN">
@@ -57,16 +74,32 @@ English content...
 </div>
 ```
 
+文章 front-matter（英文元数据写法）：
+
+```yaml
+title: 中文标题
+title_en: English title
+categories:
+  - [网络安全, 漏洞挖掘]
+categories_en:
+  - [Cybersecurity, Vulnerability Research]
+tags:
+  - 漏洞赏金
+tags_en:
+  - Bug Bounty
+```
+
 规则：
 
 - **`<div>` 与正文之间必须空行**，否则 marked 会把块内的内容当 HTML 原样输出，markdown 不再渲染
-- 样式表 `source/_static/css/i18n.css`（由 `scripts/i18n-inject.js` 注入）按 `<html lang>` 只显示当前语言的那一块，而 `lang-switch.js` 切换语言时会同步这个属性——所以**不用改任何脚本**
-- 块默认隐藏、只显示匹配语言的那一块；没有 `<html lang>` 时回落到 `zh-CN` 块，保证文字不会消失
-- 新增语种时复制一个块改 `data-lang` 即可
-- **页面 front-matter 要写 `toc: false`**：目录组件是构建期按正文里的**全部**标题生成的，两种语言的二级标题会各占一条。关于页即如此（站点默认 `toc: true`）
-- 页面标题仍用中文写 front-matter 的 `title`，英文由 `lang-switch.js` 的词表翻译；新页面的标题要跟随语言切换，需要在词表 `DICT` 里补一条
+- 语言块之外的内容（例如文件顶部的注释）会保留在所有语言里
+- `title_en` / `categories_en` / `tags_en` 分别对应中文的 `title` / `categories` / `tags`：有英文正文却没写 `title_en` 时构建会告警并沿用中文标题；缺 `categories_en` / `tags_en` 时英文版不带该分类或标签（构建同样告警）
+- 分类与标签按**位置**配对（中文第 1 个 ↔ 英文第 1 个），用于两种语言分类页 / 标签页之间的跳转；同一个中文名在不同文章里译成不同英文名时构建会告警
+- 英文分类名、标签名会转成小写短横线（`Information Gathering` → `information-gathering`，靠 `config/_config.en.yml` 的 `filename_case: 1`），中文名保持原样
+- 补译文：给正文加一个 `data-lang="en"` 的块，补上 `title_en`（必要时 `categories_en` / `tags_en`），预览自动生效
+- 新增语种：加一个 `lang-block` + `config/_config.<语种>.yml`，在 `tools/prepare-i18n.mjs` 的 `LANGS` 里登记
 
-参考文件：`source/_about/index.md`。
+参考文件：`source/_about/index.md`（页面）、`source/_posts/daily-notes/2026-10-13-hello-world.md`（文章）。
 
 ### 分类目录结构
 
@@ -141,8 +174,11 @@ source/_attach/
 
 ```
 source/_posts/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi.md
-  → https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/
+  → https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/
+  → https://funlew.github.io/en/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/   （补了英文正文后）
 ```
+
+路径部分两种语言完全一致，只有 `/zh/` 和 `/en/` 前缀不同；分类页、标签页则用各自语言的名字（`/zh/categories/网络安全/` ↔ `/en/categories/cybersecurity/`）。根路径 `https://funlew.github.io/` 是语言选择页。
 
 **移动文章到其他分类目录会改变 URL**，已有的外部链接会失效。若某篇文章需要固定 URL，可在 front-matter 里单独指定：
 
@@ -152,9 +188,9 @@ permalink: /2026-10-15-what-is-immunefi/
 
 ### 为什么目录名带下划线
 
-Hexo 默认忽略所有以 `_` 开头的文件和目录。这些目录通过 `_config.yml` 的 `include` 字段显式放行：
+Hexo 默认忽略所有以 `_` 开头的文件和目录。这些目录通过 `config/_config.zh.yml` 的 `include` 字段显式放行：
 
-```100:104:../_config.yml
+```100:104:../config/_config.zh.yml
 include:
   - _about/**
   - _attach/**
@@ -202,7 +238,7 @@ tags:
 
 **URL 格式**
 
-`_config.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
+`config/_config.zh.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
 
 ```
 source/_posts/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi.md
@@ -226,7 +262,7 @@ cover: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi
 thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
 ```
 
-封面图放在 `_attach` 的分类目录下，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
+封面图放在 `_attach` 的分类目录下，由 `config/_config.zh.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
 
 **slug 命名建议**
 
@@ -269,7 +305,11 @@ top: false
 | `top` | 否 | `true` 时置顶，标题前显示图钉图标 |
 | `updated` | 否 | 与 `date` 不同时，文章页额外显示更新时间 |
 | `permalink` | 否 | 覆盖默认永久链接，独立页面常用（参考 `source/_about/index.md`） |
-| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`_config.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭（双语页面必须关，见「双语页面（关于页）」） |
+| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`config/_config.zh.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭 |
+| `title_en` | 否 | 英文标题。写了英文正文就必须写它，否则英文站会沿用中文标题（构建告警） |
+| `categories_en` | 否 | 英文分类，**与 `categories` 一一对应、顺序一致**；不写则英文版没有分类页条目 |
+| `tags_en` | 否 | 英文标签，**与 `tags` 一一对应、顺序一致**；不写则英文版没有标签页条目 |
+| `description_en` | 否 | 英文摘要，对应 `description`（站点级摘要字段） |
 
 `cover` 和 `thumbnail` 是两个独立字段，引用同一张图也可以。
 
@@ -412,11 +452,14 @@ plugins:
 
 ## 六、本地预览
 
+两个预览服务，分别对应线上两个站点：
+
 ```bash
-npm run server
+npm run server        # 中文站 http://localhost:4000/zh/
+npm run server:en     # 英文站 http://localhost:4001/en/
 ```
 
-打开 http://localhost:4000 检查效果。修改 `source/` 下的文件后会自动热更新。
+改 `source/` 下的文件（含双语内容）会自动重新拆分并热更新——两个服务都会监听 `source/`，编辑后刷新页面即可看到两种语言的效果。判断语言切换是否正确，最直接的方式是在 `/zh/` 和 `/en/` 两个端口之间点右上角的语言按钮。
 
 **预览时若页面显示异常**（尤其是改了 front-matter、依赖或主题后），清缓存重启：
 
@@ -427,8 +470,10 @@ npm run clean && npm run server
 预览确认无误后建议再跑一次完整构建，验证生产环境无报错：
 
 ```bash
-npm run clean && npm run build
+npm run build
 ```
+
+构建结束会打印已翻译页面的交叉检查结果（每个 alternate 链接是否真的存在）和还没有英文版的文件清单。
 
 ---
 
@@ -448,10 +493,10 @@ git push
 部署流程（`.github/workflows/deploy.yml`）：
 
 ```
-合并进 main → npm ci → hexo clean && hexo generate → 上传 public/ → 部署到 GitHub Pages
+合并进 main → npm ci → npm run build（拆分双语 + 生成 /zh/、/en/、语言选择页、重定向）→ 上传 public/ → 部署到 GitHub Pages
 ```
 
-通常 1～2 分钟完成。访问 `https://funlew.github.io` 确认；仓库 **Actions** 标签页可查看构建日志，若 Pages 未更新，在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
+通常 1～2 分钟完成。访问 `https://funlew.github.io`（会自动跳到对应语言）确认；仓库 **Actions** 标签页可查看构建日志，若 Pages 未更新，在 **Settings → Pages** 中确认 Source 为 **GitHub Actions**。
 
 也支持在 Actions 页面手动触发 `workflow_dispatch`。分支模型与回滚方式详见 [开发流程](./_development-workflow.md)。
 
@@ -461,15 +506,16 @@ git push
 
 提交前逐项确认：
 
-- [ ] 本地 `npm run server` 预览无异常
-- [ ] `npm run clean && npm run build` 构建无报错
+- [ ] 本地 `npm run server` 与 `npm run server:en` 预览无异常
+- [ ] `npm run build` 构建无报错，且没有「warning: alternate link leads nowhere」
 - [ ] 文件名为英文短横线，链接美观
 - [ ] **文章放在正确的分类目录**——`source/_posts/<分类英文目录>/` 下，层级与 `categories` 一致
 - [ ] **封面放在对应的分类目录**——`source/_attach/<相同分类路径>/`，且 `cover` / `thumbnail` 字段的路径与之一致
 - [ ] `categories` / `tags` 无拼写错误（错字会生成新的分类页）
-- [ ] **新分类的显示顺序已处理**——未列入 `customOrder` 的分类会排在侧栏最后，需要固定位置时把名字加入 `_config.icarus.yml`（见「分类显示顺序」）
+- [ ] **新分类的显示顺序已处理**——未列入 `customOrder` 的分类会排在侧栏最后，需要固定位置时把名字加入 `_config.icarus.yml`（中文）和 `config/_config.en.yml`（英文，见「分类显示顺序」）
+- [ ] **英文元数据成对**——`title_en` / `categories_en` / `tags_en` 与中文一一对应，顺序一致，且已按「双语内容」补上英文正文
 - [ ] 图片文件名全小写，避免部署到 Linux 后 404
-- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL** / 分类都要对得上）
+- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL（含 `/zh/` 前缀）** / 分类都要对得上）
 - [ ] **SEO 标题**——含核心搜索关键词、长度 15-30 字、保留发布时间或数量感等有信息量的修饰
 - [ ] **嵌入 HTML 报告**（如有）——CSS 类名加文章专属前缀、JS 用 IIFE 包裹、ECharts/Chart.js 等 CDN 放在 IIFE 之前、CSS 变量（`var(--card)` 等）在容器内重定义（Icarus 主题不提供）
 - [ ] **commit / push 分开**——本地 `git commit` 可以自由做，`git push` 等显式命令（避免误推）
@@ -478,13 +524,16 @@ git push
 
 ## 九、需要注意的行为
 
-- **未来时间的文章会被发布**。`_config.yml` 中 `future: true`，`date` 写未来日期也会立刻上线。
+- **未来时间的文章会被发布**。`config/_config.zh.yml` 中 `future: true`，`date` 写未来日期也会立刻上线。
 - **草稿不会被发布**。`render_drafts: false`，文件名以 `_` 开头或 front-matter 中 `draft: true` 的文章只在本地显示（需 `hexo server --draft` 才可见）。
 - **RSS 只输出最近 20 篇**（`feed.limit: 20`），旧文章不会出现在 `/atom.xml` 中，但归档页可完整浏览。
 - **首页分页为每页 10 篇**（`index_generator.per_page: 10`）。
 - **评论功能当前未启用**。`_config.icarus.yml` 中没有 `comment` 配置，主题不会渲染评论区。若要开启，需配置 giscus / waline / valine 等任一 provider 并安装对应依赖。
 - **修改已发布文章需重新 push**。没有构建缓存，增删改都会触发完整重新部署。
 - **主题源码纳入版本管理**（`themes/icarus/`，非 submodule）。主题升级需手动比对上游，改动前建议先备份。
+- **线上旧地址会保留重定向**。中文站曾在站点根路径（`/about/`、`/cybersecurity/.../`），构建时会在这些位置生成跳转到 `/zh/` 的页面，不要手工删除 `public/` 里的这些文件（每次构建都会重建）。
+- **`.build/` 是构建中间产物**，由 `tools/prepare-i18n.mjs` 从 `source/` 生成，已在 `.gitignore` 里；改内容只改 `source/`，不要改 `.build/`（会被覆盖）。
+- **英文站只收录有译文的文章**。没补英文正文的文章在 `/en/` 下不生成页面，分类页 / 标签页同理；这不是错误，构建日志会列出待翻译的文件。
 
 ### 待处理的依赖升级
 
