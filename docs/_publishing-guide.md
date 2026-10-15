@@ -269,7 +269,7 @@ thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immu
 - 优先复用文章核心主题词，例如 `email-takeover-race-condition`、`subdomain-enumeration-asset-discovery`
 - 不要用中文 slug（hexo 会 URL 编码，链接变长且难读）
 - 多篇文章主题相近时，可在 slug 末尾加修饰词避免冲突，例如 `xxx-intro`、`xxx-deep-dive`
-- 如果未来调整 permalink 格式，记得同步更新 README 的文章索引
+- 如果未来调整 permalink 格式，记得同步更新 `docs/_readme.md` 的文章索引
 
 ---
 
@@ -515,7 +515,7 @@ git push
 - [ ] **新分类的显示顺序已处理**——未列入 `customOrder` 的分类会排在侧栏最后，需要固定位置时把名字加入 `_config.icarus.yml`（中文）和 `config/_config.en.yml`（英文，见「分类显示顺序」）
 - [ ] **英文元数据成对**——`title_en` / `categories_en` / `tags_en` 与中文一一对应，顺序一致，且已按「双语内容」补上英文正文
 - [ ] 图片文件名全小写，避免部署到 Linux 后 404
-- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL（含 `/zh/` 前缀）** / 分类都要对得上）
+- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`docs/_readme.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL（含 `/zh/` 前缀）** / 分类都要对得上）
 - [ ] **SEO 标题**——含核心搜索关键词、长度 15-30 字、保留发布时间或数量感等有信息量的修饰
 - [ ] **嵌入 HTML 报告**（如有）——CSS 类名加文章专属前缀、JS 用 IIFE 包裹、ECharts/Chart.js 等 CDN 放在 IIFE 之前、CSS 变量（`var(--card)` 等）在容器内重定义（Icarus 主题不提供）
 - [ ] **commit / push 分开**——本地 `git commit` 可以自由做，`git push` 等显式命令（避免误推）
