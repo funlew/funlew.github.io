@@ -1,11 +1,13 @@
 # English build of the site.
 #
-# Usage: hexo generate --config _config.zh.yml,_config.en.yml
+# Usage: hexo generate --config config/_config.zh.yml,config/_config.en.yml
 # (both builds, the root language page and the redirects are produced by
 # `npm run build`, see tools/build.mjs)
 #
 # Only the keys that differ from the Chinese build live here; everything else is
-# inherited from _config.zh.yml, which Hexo merges this file on top of.
+# inherited from config/_config.zh.yml, which Hexo merges this file on top of.
+# The theme configuration stays in the root as _config.icarus.yml, where Hexo
+# looks for the secondary config of the theme.
 
 i18n_lang: en
 language: en

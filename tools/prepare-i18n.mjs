@@ -36,7 +36,7 @@ const BUILD_DIR = path.join(ROOT, '.build');
 /** Languages of the site, in the order they are listed in the report. */
 const LANGS = ['zh', 'en'];
 /** Where the language keys (root, public_dir, filename_case, maps) come from. */
-const CONFIG_FILES = { zh: ['_config.zh.yml'], en: ['_config.zh.yml', '_config.en.yml'] };
+const CONFIG_FILES = { zh: ['config/_config.zh.yml'], en: ['config/_config.zh.yml', 'config/_config.en.yml'] };
 /** Language tag used in the "data-lang" attribute of a content block. */
 const LANG_CODES = { zh: 'zh-CN', en: 'en' };
 /** Directories whose markdown is rewritten per language; the rest is symlinked. */

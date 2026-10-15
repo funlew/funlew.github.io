@@ -36,7 +36,7 @@ function checkConfig(hexo) {
         logger.info('=== Checking theme configurations ===');
 
         // The site configuration of this run: `--config` may name another file
-        // (_config.zh.yml) or, with several of them, the merged _multiconfig.yml
+        // (config/_config.zh.yml) or, with several of them, the merged _multiconfig.yml
         // Hexo writes. Fall back to the Hexo default when neither is set.
         const siteCfgFile = [hexo.config_path, path.join(hexo.base_dir, '_config.yml')]
             .find(file => file && fs.existsSync(file));

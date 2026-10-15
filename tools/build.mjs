@@ -10,8 +10,8 @@
  * A full build is:
  *
  *   1. tools/prepare-i18n.mjs resolves source/ into .build/zh and .build/en
- *   2. Hexo generates the Chinese site into public/zh (_config.zh.yml) and the
- *      English one into public/en (_config.zh.yml + _config.en.yml)
+ *   2. Hexo generates the Chinese site into public/zh (config/_config.zh.yml) and
+ *      the English one into public/en (config/_config.zh.yml + _config.en.yml)
  *   3. public/index.html becomes the language selection page, and every page of
  *      the Chinese site also gets a redirect stub where it used to be published
  *      (the Chinese site lived at the site root until it moved to /zh/)
@@ -35,8 +35,8 @@ const SITE_URL = 'https://funlew.github.io';
 
 /** The two builds: Hexo arguments, output directory, dev server port. */
 const LANGS = {
-    zh: { hexo: ['--config', '_config.zh.yml'], dir: 'zh', port: 4000, label: '中文' },
-    en: { hexo: ['--config', '_config.zh.yml,_config.en.yml'], dir: 'en', port: 4001, label: 'English' }
+    zh: { hexo: ['--config', 'config/_config.zh.yml'], dir: 'zh', port: 4000, label: '中文' },
+    en: { hexo: ['--config', 'config/_config.zh.yml,config/_config.en.yml'], dir: 'en', port: 4001, label: 'English' }
 };
 
 function run(command, args) {

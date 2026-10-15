@@ -29,7 +29,7 @@ navbar:
     # Links to be shown on the right of the navigation bar.
     # "语言" is the language switch button (中文 <-> English): it opens the same
     # page of the other site (/zh/ and /en/ are built separately), handled by
-    # source/_static/js/language-switch.js. _config.en.yml renames the label to
+    # source/_static/js/language-switch.js. config/_config.en.yml renames the label to
     # "Language". Remove the entry to get rid of the button.
     links:
         语言:
@@ -163,8 +163,10 @@ widgets:
                 url: /atom.xml
     # Table of contents widget configurations
     # The TOC widget is only rendered on posts/pages when "toc: true" is set
-    # in the site configuration (_config.zh.yml / _config.en.yml), so it stays
-    # hidden by default to match the three-column layout without a contents card.
+    # in the site configuration (config/_config.zh.yml / config/_config.en.yml),
+    # so it stays hidden by default to match the three-column layout without a
+    # contents card. This file itself stays in the root: Hexo loads the
+    # secondary theme configuration from there.
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left

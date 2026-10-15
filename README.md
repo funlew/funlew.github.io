@@ -66,7 +66,7 @@ tools/           双语构建脚手架（拆分源树 / 串联两次生成）
 | `source/_static/` | 🎨 favicon、头像、自定义 CSS/JS |
 | `source/_about/` | 📄 关于页等独立页面 |
 
-> ℹ️ 这些目录的下划线是 Hexo 的要求（否则会被忽略），已在 `_config.zh.yml` 的 `include` 中放行。`docs/` 同理采用 `_` 前缀表示「不是博客内容」，详见 [开发流程](./docs/_development-workflow.md)。
+> ℹ️ 这些目录的下划线是 Hexo 的要求（否则会被忽略），已在 `config/_config.zh.yml` 的 `include` 中放行。`docs/` 同理采用 `_` 前缀表示「不是博客内容」，详见 [开发流程](./docs/_development-workflow.md)。
 
 ---
 

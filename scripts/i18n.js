@@ -6,7 +6,7 @@
  * 1. The theme UI text. The navbar menu, the widget entries and the social link
  *    names are plain values of _config.icarus.yml, not theme translations, so
  *    the English wording is listed in the "i18n_theme" section of
- *    _config.en.yml and applied here on top of the merged theme configuration.
+ *    config/_config.en.yml and applied here on top of the merged theme configuration.
  * 2. The hreflang alternates. tools/prepare-i18n.mjs writes _data/i18n.json
  *    with, for every page of this build, the matching page of the other
  *    language (null when the page has no translation) plus the category and tag

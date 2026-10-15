@@ -57,17 +57,18 @@ git checkout dev-fix
 ### 仓库目录
 
 ```
-docs/            项目文档，不是博客内容
-scripts/         注入样式与脚本、包装主题生成器、双语构建支持（i18n.js）
-scaffolds/       hexo new 使用的文章模板
-source/          博客内容（_posts 文章、_attach 配图、_static 资源、_about 独立页）
-themes/icarus/   Icarus 主题源码（纳入版本管理，不是 submodule）
-tools/           构建脚手架：prepare-i18n.mjs 拆分双语源树，build.mjs 串联两次生成
-.build/          双语构建的中间产物（每次构建重新生成，已 gitignore，不要手改）
-_config.en.yml   英文站的配置覆盖（中文站用 _config.zh.yml）
+docs/               项目文档，不是博客内容
+scripts/            注入样式与脚本、包装主题生成器、双语构建支持（i18n.js）
+config/             两种语言的站点配置（_config.zh.yml、_config.en.yml），由 --config 显式传入
+scaffolds/          hexo new 使用的文章模板
+source/             博客内容（_posts 文章、_attach 配图、_static 资源、_about 独立页）
+themes/icarus/      Icarus 主题源码（纳入版本管理，不是 submodule）
+tools/              构建脚手架：prepare-i18n.mjs 拆分双语源树，build.mjs 串联两次生成
+.build/             双语构建的中间产物（每次构建重新生成，已 gitignore，不要手改）
+_config.icarus.yml  主题配置，固定在站点根目录：Hexo 只从根目录加载 _config.[theme].yml
 ```
 
-`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `_config.zh.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
+`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `config/_config.zh.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
 
 **`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。新增文档请遵守，并同步更新 `README.md` 的索引以及文档之间的互链。
 
@@ -91,7 +92,7 @@ git push                     # 直接推送到 dev-fix
 | 改动位置 | 最低验证 |
 | --- | --- |
 | `source/_posts/` 文章内容 | `npm run server` / `npm run server:en` 看两种语言的渲染结果 |
-| `_config.zh.yml` / `_config.en.yml` / `_config.icarus.yml` | `npm run build` 完整构建 |
+| `config/_config.zh.yml` / `config/_config.en.yml` / `_config.icarus.yml` | `npm run build` 完整构建 |
 | `scripts/` 下的脚本 | `npm run clean` + `npm run build` + 看构建日志 |
 | `tools/` 下的构建脚本 | `npm run clean` + `npm run build`，并确认 `.build/` 与 `public/` 结构 |
 | `themes/icarus/` 主题源码 | `npm run clean` + `npm run build` |
@@ -110,7 +111,7 @@ bluebird.filter([ctx.theme_script_dir, ctx.script_dir], ...)
 
 即**主题 `scripts/` 先加载，项目 `scripts/` 后加载**。因此项目脚本在加载时能拿到主题已注册的扩展，`scripts/search-index-filter.js` 正是利用这一点来包装主题注册的 `insight` generator。
 
-`scripts/i18n.js` 则依赖**过滤器**的执行顺序：它用 `template_locals` 把 `_config.en.yml` 里 `i18n_theme` 的英文界面文案覆盖到页面 locals 上，而这份 locals 是主题的同名过滤器（默认优先级 10）拼出来的，所以它注册在优先级 20。改这一段时注意别把优先级去掉，否则英文站会用回中文菜单。
+`scripts/i18n.js` 则依赖**过滤器**的执行顺序：它用 `template_locals` 把 `config/_config.en.yml` 里 `i18n_theme` 的英文界面文案覆盖到页面 locals 上，而这份 locals 是主题的同名过滤器（默认优先级 10）拼出来的，所以它注册在优先级 20。改这一段时注意别把优先级去掉，否则英文站会用回中文菜单。
 
 如果将来新增脚本依赖这个顺序，请在文件注释里写明。
 
@@ -120,7 +121,7 @@ bluebird.filter([ctx.theme_script_dir, ctx.script_dir], ...)
 
 ```
 tools/prepare-i18n.mjs   source/ → .build/zh、.build/en（拆分语言、挑出 *_en 字段、生成 _data/i18n.json）
-hexo generate            .build/zh → public/zh（_config.zh.yml），.build/en → public/en（+_config.en.yml）
+hexo generate            .build/zh → public/zh（config/_config.zh.yml），.build/en → public/en（+config/_config.en.yml）
 tools/build.mjs 收尾      public/index.html 语言选择页、旧地址重定向、两种语言的链接交叉检查
 ```
 
