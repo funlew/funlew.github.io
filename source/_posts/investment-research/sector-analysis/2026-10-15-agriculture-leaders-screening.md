@@ -9,8 +9,8 @@ tags:
   - 龙头股
   - 板块分析
   - 选股
-cover: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
-thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
+cover: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
+thumbnail: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
 ---
 
 2026 年 10 月 15 日收盘，申万一级「农林牧渔」板块大幅下挫：中粮糖业 -9.70%、海南橡胶 -10.01%（跌停）、金健米业 -9.01%、农发种业 -5.10%、登海种业 -4.64%，农产品加工板块指数当日跌约 3%。

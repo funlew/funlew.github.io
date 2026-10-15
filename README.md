@@ -11,11 +11,13 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
-| 🔗 [农产品板块龙头股怎么挑：四档分位、20 只标的（2026 年 10 月）](https://funlew.github.io/2026-10-15-agriculture-leaders-screening/) | 投资研究 / 板块分析 | 2026-10-15 |
-| 🔗 [从登录框到 RCE：Web 渗透测试的 5 层攻击链方法论](https://funlew.github.io/2026-10-15-login-to-rce-web-pentest/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
-| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
-| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
-| 🔗 [Hello，world！](https://funlew.github.io/2026-10-13-hello-world/) | 日常随笔 | 2026-10-13 |
+| 🔗 [Web3 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [从登录框到 RCE：Web 渗透测试的 5 层攻击链方法论](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-login-to-rce-web-pentest/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [农产品板块龙头股怎么挑：四档分位、20 只标的（2026 年 10 月）](https://funlew.github.io/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening/) | 投资研究 / 板块分析 | 2026-10-15 |
+| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
+| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
+| 🔗 [Hello，world！](https://funlew.github.io/daily-notes/2026-10-13-hello-world/) | 日常随笔 | 2026-10-13 |
 
 
 ---
