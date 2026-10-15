@@ -173,6 +173,11 @@ widgets:
         collapsed: true
         # Maximum level of headings to show (1-6)
         depth: 3
+    # Categories widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: categories
     # Recommendation links widget configurations
     # A value that is a URL string is rendered as a single entry. A mapping
     # value becomes a second level heading, and its keys become the entries
@@ -186,11 +191,6 @@ widgets:
             Icarus: https://ppoffice.github.io/hexo-theme-icarus/
             图片素材:
                 Gratisography: https://gratisography.com/
-    # Categories widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: categories
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

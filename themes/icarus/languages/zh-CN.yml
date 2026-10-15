@@ -3,8 +3,8 @@ common:
         one: '归档'
         other: '归档'
     category:
-        one: '分类'
-        other: '分类'
+        one: '文章分类'
+        other: '文章分类'
     tag:
         one: '标签'
         other: '标签'
