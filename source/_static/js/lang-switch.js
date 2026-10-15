@@ -8,6 +8,11 @@
  *
  * Article content (.content) and dynamic areas (search results, comments)
  * are never touched.
+ *
+ * Multi-language page content is not translated here: such pages ship one
+ * ".lang-block" per language and the stylesheet toggles them on <html lang>,
+ * which this script keeps up to date. See source/_about/index.md and
+ * source/_static/css/i18n.css.
  */
 (function () {
     'use strict';

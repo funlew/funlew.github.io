@@ -35,6 +35,39 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 | `source/_static/` | 站点级静态资源：favicon、头像、自定义 CSS/JS |
 | `source/_about/` | 关于页等独立页面 |
 
+### 双语页面（关于页）
+
+站点只有一份 HTML，构建语言固定为 `zh-CN`；界面语言由导航栏的语言按钮在浏览器里切换（`source/_static/js/lang-switch.js`）。需要中英双语的**页面内容**，就把两种语言写进同一个文件，各占一个语言块：
+
+```markdown
+<div class="lang-block" data-lang="zh-CN" lang="zh-CN">
+
+## 关于我
+
+中文内容……
+
+</div>
+
+<div class="lang-block" data-lang="en" lang="en">
+
+## About Me
+
+English content...
+
+</div>
+```
+
+规则：
+
+- **`<div>` 与正文之间必须空行**，否则 marked 会把块内的内容当 HTML 原样输出，markdown 不再渲染
+- 样式表 `source/_static/css/i18n.css`（由 `scripts/i18n-inject.js` 注入）按 `<html lang>` 只显示当前语言的那一块，而 `lang-switch.js` 切换语言时会同步这个属性——所以**不用改任何脚本**
+- 块默认隐藏、只显示匹配语言的那一块；没有 `<html lang>` 时回落到 `zh-CN` 块，保证文字不会消失
+- 新增语种时复制一个块改 `data-lang` 即可
+- **页面 front-matter 要写 `toc: false`**：目录组件是构建期按正文里的**全部**标题生成的，两种语言的二级标题会各占一条。关于页即如此（站点默认 `toc: true`）
+- 页面标题仍用中文写 front-matter 的 `title`，英文由 `lang-switch.js` 的词表翻译；新页面的标题要跟随语言切换，需要在词表 `DICT` 里补一条
+
+参考文件：`source/_about/index.md`。
+
 ### 分类目录结构
 
 `_posts` 与 `_attach` 都按文章分类建目录，**目录名用分类的英文翻译**，层级与分类层级一致：
@@ -49,9 +82,6 @@ source/_posts/
 │       ├── 2026-10-15-login-to-rce-web-pentest.md
 │       ├── 2026-10-15-web3-career-paths.md
 │       └── 2026-10-15-what-is-immunefi.md
-├── investment-research/                             # 投资研究
-│   └── sector-analysis/                             #   板块分析
-│       └── 2026-10-15-agriculture-leaders-screening.md
 └── daily-notes/                                     # 日常随笔
     └── 2026-10-13-hello-world.md
 ```
@@ -63,7 +93,6 @@ source/_attach/
 ├── cybersecurity/
 │   ├── information-gathering/2026-10-15-...-cover.jpg
 │   └── vulnerability-research/2026-10-15-...-cover.jpg
-├── investment-research/sector-analysis/2026-10-15-...-cover.jpg
 └── daily-notes/2026-10-13-hello-world-cover.jpg
 ```
 
@@ -74,8 +103,6 @@ source/_attach/
 | 网络安全 | `cybersecurity` |
 | 信息搜集 | `information-gathering` |
 | 漏洞挖掘 | `vulnerability-research` |
-| 投资研究 | `investment-research` |
-| 板块分析 | `sector-analysis` |
 | 日常随笔 | `daily-notes` |
 
 **新增分类时**：先在 `_posts` 和 `_attach` 下建同名英文目录，再在文章 front-matter 的 `categories` 里填中文分类名。两者要对应。
@@ -84,20 +111,18 @@ source/_attach/
 
 ### 分类显示顺序
 
-左侧栏「文章分类」的一级分类不按名称排序，而是按固定顺序显示：
+左侧栏「分类」的一级分类不按名称排序，而是按固定顺序显示：
 
 | 顺序 | 一级分类 |
 | --- | --- |
 | 1 | 网络安全 |
-| 2 | 投资研究 |
-| 3 | 日常随笔 |
+| 2 | 日常随笔 |
 
 顺序在 `_config.icarus.yml` 的 categories widget 的 `customOrder` 中配置：
 
 ```yaml
         customOrder:
             - 网络安全
-            - 投资研究
             - 日常随笔
 ```
 
@@ -168,8 +193,8 @@ tags:
 
 | 文件 | 格式 | 示例 |
 | --- | --- | --- |
-| 文章 | `YYYY-MM-DD-slug.md` | `2026-10-15-agriculture-leaders-screening.md` |
-| 封面 | `YYYY-MM-DD-slug-cover.jpg` | `2026-10-15-agriculture-leaders-screening-cover.jpg` |
+| 文章 | `YYYY-MM-DD-slug.md` | `2026-10-15-what-is-immunefi.md` |
+| 封面 | `YYYY-MM-DD-slug-cover.jpg` | `2026-10-15-what-is-immunefi-cover.jpg` |
 
 - `YYYY-MM-DD` 为发布日期，对应 front-matter 的 `date` 字段
 - `slug` 为英文小写加短横线，与文章主题对应（不是中文标题）
@@ -180,9 +205,9 @@ tags:
 `_config.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
 
 ```
-source/_posts/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening.md
+source/_posts/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi.md
                    ↓
-URL: /investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening/
+URL: /cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/
 ```
 
 **为什么这样**
@@ -197,15 +222,15 @@ URL: /investment-research/sector-analysis/2026-10-15-agriculture-leaders-screeni
 封面字段的路径要与 `_attach` 下的分类目录一致：
 
 ```yaml
-cover: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
-thumbnail: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
+cover: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
+thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
 ```
 
 封面图放在 `_attach` 的分类目录下，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
 
 **slug 命名建议**
 
-- 优先复用文章核心主题词，例如 `email-takeover-race-condition`、`agriculture-leaders-screening`
+- 优先复用文章核心主题词，例如 `email-takeover-race-condition`、`subdomain-enumeration-asset-discovery`
 - 不要用中文 slug（hexo 会 URL 编码，链接变长且难读）
 - 多篇文章主题相近时，可在 slug 末尾加修饰词避免冲突，例如 `xxx-intro`、`xxx-deep-dive`
 - 如果未来调整 permalink 格式，记得同步更新 README 的文章索引
@@ -244,6 +269,7 @@ top: false
 | `top` | 否 | `true` 时置顶，标题前显示图钉图标 |
 | `updated` | 否 | 与 `date` 不同时，文章页额外显示更新时间 |
 | `permalink` | 否 | 覆盖默认永久链接，独立页面常用（参考 `source/_about/index.md`） |
+| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`_config.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭（双语页面必须关，见「双语页面（关于页）」） |
 
 `cover` 和 `thumbnail` 是两个独立字段，引用同一张图也可以。
 
@@ -280,7 +306,7 @@ cats = cats.filter(cat => {
 
 对象落到 `` `${cat}` `` 上就被字符串化了。本站的「网络安全 / 赏金SRC / 信息搜集」即按上面的数组对写法预留，写第一篇相关文章时填进去，左侧就会出现该层级。
 
-**分类由文章驱动**：没有任何文章使用的分类不会出现在侧栏，所以建分类的实质是给文章挂分类，而不是单独创建。一级分类在侧栏中的显示顺序是固定的（网络安全 → 投资研究 → 日常随笔），配置方式见「二、目录约定」中的「分类显示顺序」。
+**分类由文章驱动**：没有任何文章使用的分类不会出现在侧栏，所以建分类的实质是给文章挂分类，而不是单独创建。一级分类在侧栏中的显示顺序是固定的（网络安全 → 日常随笔），配置方式见「二、目录约定」中的「分类显示顺序」。
 
 ---
 
@@ -381,14 +407,6 @@ plugins:
 - 表格保留语义化标签（`<thead>`、`<tbody>`、`<th>`、`<td>`），不要全用 `<div>` 模拟
 - 图表配上下文说明文字（`agri-note` 之类的 div），让搜索引擎理解图表含义
 - markdown 摘要（`<!-- more -->` 之前）保持纯 markdown，让首页 / RSS 抓取正常
-
-**典型示例**
-
-`2026-10-15-agriculture-leaders-screening` 是一份嵌入型报告：
-
-- markdown 主体：引言、结论速览、四条主线、D 档详细、风险提示、免责声明
-- 内嵌 HTML：4 档龙头的 15 列表格（红/金/绿高亮、D 档红底）、KPI 卡片网格、期货品种映射表、ECharts 散点图 + 柱状图
-- 命名空间：`.agri-tw`、`.agri-kpi`、`.agri-chartbox` 等全部加 `.agri-` 前缀
 
 ---
 
