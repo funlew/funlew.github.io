@@ -1,4 +1,4 @@
-## 📖 文档
+## 📖 工程文档
 
 | 标题 | 内容 |
 | --- | --- |
@@ -15,7 +15,6 @@
 | 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026/10/14/email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
 | 🔗 [Hello，world！](https://funlew.github.io/2026/10/13/hello-world/) | 随笔 | 2026-10-13 |
 
-> ℹ️ 最新一篇（资产发现指南）目前只存在于 `dev-fix` 分支，合入 `main` 后才会出现在博客首页。
 
 ---
 
