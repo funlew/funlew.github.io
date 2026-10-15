@@ -242,6 +242,61 @@ plugins:
 
 外链图片会自动以新标签页打开（`external_link.enable: true`，全站生效）。
 
+### 嵌入 HTML 报告内容
+
+如果原素材是一份带样式 / 表格 / 交互图表的 HTML 报告，可以保留这些视觉资产内联进 .md。流程与规则：
+
+**何时考虑嵌入**
+
+- 报告里有 markdown 难以表达的元素（高亮分组、紧凑数据表、hover tooltip、动态图表等）
+- 你希望保留原报告的视觉特征（颜色编码、分组行、气泡尺寸等）
+- 不愿为每张图单独生成静态截图
+
+**嵌入范围选择**
+
+按"原样搬多少 HTML 进 .md"分三档：
+
+| 档位 | 说明 | 适用 |
+| --- | --- | --- |
+| 轻量嵌入 | 只保留关键图表（ECharts 等），主体用 markdown | 文字多、图少 |
+| 表格嵌入（推荐） | 把带高亮的表格原样搬过来，文字叙述仍用 markdown | 报告型文章 |
+| 完整嵌入 | 把整份 HTML 内联，markdown 仅做引言 / 摘要 | 设计型展示页 |
+
+**实施规则**
+
+1. **CDN 资源**：ECharts / Chart.js 等用 `<script src="https://cdn.jsdelivr.net/...">` 引入；本地资源放 `source/_static/` 或 `source/_attach/`，引用用绝对路径 `/_attach/...`。
+
+2. **CSS 命名空间**：报告里的通用类名（`.card`、`.kpi`、`.tw`、`.charts` 等）会和 Icarus 主题冲突。**所有类名加文章专属前缀**（例：`.agri-`），**CSS 变量**（`var(--card)`、`var(--ink2)` 等）也要在容器内重定义（Icarus 主题不提供这些变量）。在文章正文用 `<style>` 块定义——marked 7.x 默认原样保留 `<style>` 标签。
+
+3. **JS 作用域**：报告里 `var scatA = [...]` 这种顶层声明会污染 `window`。**用 IIFE 包裹**：
+
+   ```js
+   (function() {
+     var scatA = [...];
+     echarts.init(document.getElementById("agri-chart1")).setOption({...});
+   })();
+   ```
+
+4. **加载顺序**：`<script src="...echarts.min.js">` 放在 `<script>...IIFE...</script>` 之前。如果用 `head_end` 注入器，CDN 加载会先于文章体内的 IIFE。
+
+5. **避免解析副作用**：模板字符串里的 `{{ }}` 会被某些 ejs 主题处理（hexo 默认不会但要避开），`<style>` 块里不要用 HTML 实体转义字符。
+
+**SEO 注意点**
+
+- 嵌入式 `<style>` 块应保持简洁，**不要写大段非必要 CSS**
+- ECharts 容器不要加 `display: none` 等隐藏样式，否则搜索引擎会跳过
+- 表格保留语义化标签（`<thead>`、`<tbody>`、`<th>`、`<td>`），不要全用 `<div>` 模拟
+- 图表配上下文说明文字（`agri-note` 之类的 div），让搜索引擎理解图表含义
+- markdown 摘要（`<!-- more -->` 之前）保持纯 markdown，让首页 / RSS 抓取正常
+
+**典型示例**
+
+`2026-10-15-agriculture-leaders-screening` 是一份嵌入型报告：
+
+- markdown 主体：引言、结论速览、四条主线、D 档详细、风险提示、免责声明
+- 内嵌 HTML：4 档龙头的 15 列表格（红/金/绿高亮、D 档红底）、KPI 卡片网格、期货品种映射表、ECharts 散点图 + 柱状图
+- 命名空间：`.agri-tw`、`.agri-kpi`、`.agri-chartbox` 等全部加 `.agri-` 前缀
+
 ---
 
 ## 六、本地预览
