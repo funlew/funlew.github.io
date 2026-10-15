@@ -21,15 +21,16 @@ const path = require('path');
 
 const LANG_TAGS = { zh: 'zh-CN', en: 'en' };
 
-let cachedMap = null;
-
-/** The _data/i18n.json written by tools/prepare-i18n.mjs. */
+/**
+ * The _data/i18n.json written by tools/prepare-i18n.mjs.
+ *
+ * Read on every call on purpose: the preview server keeps this module in
+ * memory while tools/prepare-i18n.mjs rewrites the file whenever the content
+ * changes, so a cached copy would stay stale until the next restart.
+ */
 function i18nMap() {
-    if (!cachedMap) {
-        const file = path.join(hexo.source_dir, '_data', 'i18n.json');
-        cachedMap = JSON.parse(fs.readFileSync(file, 'utf8'));
-    }
-    return cachedMap;
+    const file = path.join(hexo.source_dir, '_data', 'i18n.json');
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
 /** Route path of this page → route path of the same page in the other language. */
