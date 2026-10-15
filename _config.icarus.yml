@@ -188,7 +188,8 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
-            Icarus: https://ppoffice.github.io/hexo-theme-icarus/
+            博客主题:
+                Icarus: https://ppoffice.github.io/hexo-theme-icarus/
             图片素材:
                 Gratisography: https://gratisography.com/
     # Recent posts widget configurations
