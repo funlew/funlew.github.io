@@ -1,21 +1,18 @@
 ---
 title: 关于
+title_en: About
 date: 2026-10-13 22:40:00
 permalink: /about/
 comment: false
-# 页面的 front-matter 会并入主题配置，所以 toc: false 只作用在本页。
-# 目录组件按正文里的全部标题在构建期生成，双语的二级标题（关于我 / About Me）
-# 会各占一条，因此这里关闭目录（站点默认 toc: true）。详见 docs/_publishing-guide.md。
-toc: false
 ---
 
 <!--
-关于页是中英双语的：每个语种写在一个 data-lang 块里，样式表
-（source/_static/css/i18n.css）按 <html lang> 只显示当前语言的那一块。
-界面语言由导航栏的语言按钮切换（source/_static/js/lang-switch.js），
-它会把 <html lang> 同步成 en / zh-CN，两个块随之切换。
+关于页是中英双语的：每个语种占一个 lang-block，front matter 里的英文标题写在
+title_en 里。构建时由 tools/prepare-i18n.mjs 只保留当前语言的那一块，所以
+/zh/about/ 只有中文、/en/about/ 只有英文，两个地址各自是完整页面。导航栏的语言
+按钮（source/_static/js/language-switch.js）打开的是本页的另一种语言版本。
 
-新增语种时：复制一个 .lang-block 并改 data-lang 即可，不用改脚本。
+新增语种时：复制一个 lang-block 改 data-lang，再补上对应的 title_en 即可。
 -->
 
 <div class="lang-block" data-lang="zh-CN" lang="zh-CN">

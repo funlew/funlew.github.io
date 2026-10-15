@@ -3,17 +3,24 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+## The site is generated twice: Chinese under /zh/ and English under /en/
+## (_config.en.yml overrides the keys below for the English build). Everything
+## that differs per language — title, description, urls, directories — is set in
+## the language section of the two configs, the rest is shared here.
+## See tools/prepare-i18n.mjs and docs/_publishing-guide.md.
 title: funlew 的博客
 subtitle: 'stay hungry, stay foolish'
 description: '记录技术、开源与生活'
 keywords: 博客,技术,开源,生活
 author: funlew
 language: zh-CN
+i18n_lang: zh # zh | en, read by the scripts in scripts/ and tools/
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://funlew.github.io
+url: https://funlew.github.io/zh
+root: /zh/
 permalink: :title/
 permalink_defaults:
 pretty_urls:
@@ -21,8 +28,10 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
-source_dir: source
-public_dir: public
+## The two source trees are generated from source/ by tools/prepare-i18n.mjs,
+## which resolves the per-language content and front matter first.
+source_dir: .build/zh
+public_dir: public/zh
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
