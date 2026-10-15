@@ -1,9 +1,20 @@
-## 📖 文档
+## 📖 工程文档
 
 | 标题 | 内容 |
 | --- | --- |
 | [📝 发布流程](./docs/_publishing-guide.md) | 写一篇新文章并让它上线：目录约定、front-matter 字段、正文写法、本地预览、发布与回滚 |
 | [🛠️ 开发流程](./docs/_development-workflow.md) | 分支模型（`dev-fix` 工作分支 / `main` 部署分支）、提交规范、验证要求、分支保护、依赖升级 |
+
+---
+
+## 📰 最新文章
+
+| 标题 | 分类 | 日期 |
+| --- | --- | --- |
+| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/2026/10/15/subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
+| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026/10/14/email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
+| 🔗 [Hello，world！](https://funlew.github.io/2026/10/13/hello-world/) | 随笔 | 2026-10-13 |
+
 
 ---
 
