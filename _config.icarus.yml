@@ -107,7 +107,7 @@ widgets:
         # Author name
         author: funlew
         # Author title
-        author_title: '啊 呜！，a wu！(‾◡◝) ！'
+        author_title: 'a wu！(‾◡◝) ！'
         # Author's current location
         location: 
         # URL or path to the avatar image
@@ -186,7 +186,6 @@ widgets:
         # documented in docs/_publishing-guide.md.
         customOrder:
             - 网络安全
-            - 投资研究
             - 日常随笔
     # Recommendation links widget configurations
     # A value that is a URL string is rendered as a single entry. A mapping

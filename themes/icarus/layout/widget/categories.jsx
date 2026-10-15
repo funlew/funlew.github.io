@@ -28,7 +28,7 @@ function applyCustomOrder(categories, customOrder) {
  *
  * The upstream component sorts each sibling group by the "orderBy" option
  * alone, which cannot express a hand picked order such as the one the
- * sidebar shows (网络安全, 投资研究, 日常随笔). This component inherits the
+ * sidebar shows (网络安全, 日常随笔). This component inherits the
  * rendering from the upstream one and overrides the data preparation: the
  * top level categories are reordered according to the "customOrder" option,
  * while the nested ones keep the upstream behaviour.
