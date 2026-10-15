@@ -178,6 +178,16 @@ widgets:
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: categories
+        # Display order of the top level categories, the names must match the
+        # Chinese category names in the post front-matter exactly. Names that
+        # are not listed here are appended after the listed ones in their
+        # default (name) order. The option is read by the widget component in
+        # themes/icarus/layout/widget/categories.jsx, and the agreed order is
+        # documented in docs/_publishing-guide.md.
+        customOrder:
+            - 网络安全
+            - 投资研究
+            - 日常随笔
     # Recommendation links widget configurations
     # A value that is a URL string is rendered as a single entry. A mapping
     # value becomes a second level heading, and its keys become the entries
