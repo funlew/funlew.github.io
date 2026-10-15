@@ -36,25 +36,3 @@
     // Pinch-zoom is allowed, so keep fields at 16px on touch screens instead of disabling zoom.
     input, select, textarea, .input, .textarea, .select select, .searchbox input
         font-size: 16px
-
-/* ---------------------------------
- *            Column Widths
- * --------------------------------- */
-// The main column is widened by 10% relative to the Bulma grid, and the
-// sidebars give up the same amount so that a row still adds up to 100%.
-// These rules come last on purpose: both queries below match on widescreen and
-// up, where the widescreen rule must win, and at equal specificity the later
-// rule wins.
-+tablet()
-    .is-3-column .column-main
-        width: 73.3333% // 66.6667% * 1.1
-
-    .is-3-column .column-left, .is-3-column .column-right
-        width: 26.6667% // 33.3333% * 0.8
-
-+widescreen()
-    .is-3-column .column-main
-        width: 55% // 50% * 1.1
-
-    .is-3-column .column-left, .is-3-column .column-right
-        width: 22.5% // 25% * 0.9
