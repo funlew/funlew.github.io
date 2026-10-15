@@ -356,6 +356,10 @@ git push
 - [ ] `cover` 图片已上传到 `source/_attach/` 并在正文中用绝对路径引用
 - [ ] `categories` / `tags` 无拼写错误（错字会生成新的分类页）
 - [ ] 图片文件名全小写，避免部署到 Linux 后 404
+- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题/链接/分类都要对得上）
+- [ ] **SEO 标题**——含核心搜索关键词、长度 15-30 字、保留发布时间或数量感等有信息量的修饰
+- [ ] **嵌入 HTML 报告**（如有）——CSS 类名加文章专属前缀、JS 用 IIFE 包裹、ECharts/Chart.js 等 CDN 放在 IIFE 之前、CSS 变量（`var(--card)` 等）在容器内重定义（Icarus 主题不提供）
+- [ ] **commit / push 分开**——本地 `git commit` 可以自由做，`git push` 等显式命令（避免误推）
 
 ---
 
