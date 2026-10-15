@@ -27,8 +27,10 @@ navbar:
         标签: /tags
         关于: /about
     # Links to be shown on the right of the navigation bar.
-    # "语言" is the UI language switch button (zh-CN <-> en), handled by
-    # source/js/lang-switch.js. Remove it to get rid of the button.
+    # "语言" is the language switch button (中文 <-> English): it opens the same
+    # page of the other site (/zh/ and /en/ are built separately), handled by
+    # source/_static/js/language-switch.js. _config.en.yml renames the label to
+    # "Language". Remove the entry to get rid of the button.
     links:
         语言:
             icon: fas fa-language

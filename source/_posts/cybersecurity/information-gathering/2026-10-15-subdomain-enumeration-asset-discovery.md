@@ -1,14 +1,23 @@
 ---
 title: 冰山之下：那些没人认领的子域名，正在暴露你的基础设施
+title_en: 'Beneath the Iceberg: Unclaimed Subdomains Are Exposing Your Infrastructure'
 date: 2026-10-15 10:40:00
 categories:
   - [网络安全, 信息搜集]
+categories_en:
+  - [Cybersecurity, Information Gathering]
 tags:
   - 子域名枚举
   - 资产发现
   - 信息收集
   - OSINT
   - 攻击面
+tags_en:
+  - Subdomain Enumeration
+  - Asset Discovery
+  - Reconnaissance
+  - OSINT
+  - Attack Surface
 cover: /_attach/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery-cover.jpg
 thumbnail: /_attach/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery-cover.jpg
 ---

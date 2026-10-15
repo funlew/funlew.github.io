@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
-    "clean": "hexo clean",
+    "build": "node tools/build.mjs",
+    "clean": "node tools/build.mjs clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "prepare:i18n": "node tools/prepare-i18n.mjs",
+    "server": "node tools/build.mjs serve zh",
+    "server:en": "node tools/build.mjs serve en"
   },
   "hexo": {
     "version": "8.1.2"
@@ -16,6 +18,7 @@
     "deepmerge": "^4.3.1",
     "hexo": "^8.0.0",
     "hexo-component-inferno": "^3.1.2",
+    "hexo-front-matter": "^4.2.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",

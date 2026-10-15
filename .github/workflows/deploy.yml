@@ -36,8 +36,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Builds the Chinese site (public/zh), the English site (public/en), the
+      # language selection page (public/index.html) and the redirects of the
+      # former site root, see tools/build.mjs.
       - name: Build site
-        run: npx hexo clean && npx hexo generate
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

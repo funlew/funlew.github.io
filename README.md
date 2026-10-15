@@ -11,12 +11,12 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
-| 🔗 [Web3 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
-| 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
-| 🔗 [从登录框到 RCE：Web 渗透测试的 5 层攻击链方法论](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-login-to-rce-web-pentest/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
-| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
-| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
-| 🔗 [Hello，world！](https://funlew.github.io/daily-notes/2026-10-13-hello-world/) | 日常随笔 | 2026-10-13 |
+| 🔗 [Web3 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [从登录框到 RCE：Web 渗透测试的 5 层攻击链方法论](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-15-login-to-rce-web-pentest/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
+| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/zh/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
+| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
+| 🔗 [Hello，world！](https://funlew.github.io/zh/daily-notes/2026-10-13-hello-world/) | 日常随笔 | 2026-10-13 |
 
 
 ---
@@ -36,9 +36,10 @@ npm ci
 
 | 命令 | 作用 |
 | --- | --- |
-| `npm run server` | 启动本地预览，http://localhost:4000 |
-| `npm run clean` | 清除 `public/` 与 `db.json` 缓存 |
-| `npm run build` | 生成静态站点到 `public/` |
+| `npm run server` | 中文站预览，http://localhost:4000/zh/ |
+| `npm run server:en` | 英文站预览，http://localhost:4001/en/ |
+| `npm run clean` | 清除 `public/`、`.build/` 与 `db.json` 缓存 |
+| `npm run build` | 完整构建：拆分双语 → `/zh/`、`/en/` → 语言选择页 |
 
 > ⚠️ `npm run deploy` 在本地无效。站点未配置 deployer，发布一律通过 `main` 分支的 Actions 完成。
 
@@ -48,10 +49,12 @@ npm ci
 
 ```
 docs/            项目文档
-scripts/         注入样式与脚本、包装主题生成器
+scripts/         注入样式与脚本、包装主题生成器、双语构建支持
 scaffolds/       hexo new 使用的文章模板
-source/          博客内容
+source/          博客内容（中英双语的唯一来源）
 themes/icarus/   Icarus 主题源码
+tools/           双语构建脚手架（拆分源树 / 串联两次生成）
+.build/          构建中间产物，已 gitignore
 ```
 
 写作只需关注 `source/`：
@@ -71,9 +74,11 @@ themes/icarus/   Icarus 主题源码
 
 Hexo 8.1.2 · Icarus 6.1.1 · Inferno（JSX 渲染）· Marked · Stylus · highlight.js
 
+站点是**中英双语**的：`https://funlew.github.io/zh/` 与 `https://funlew.github.io/en/` 两份完整站点一次构建生成，语言按钮打开同一页面的另一语言版本；两种语言的内容写在同一个源文件里，详见 [发布流程](./docs/_publishing-guide.md#双语内容中文--英文)。
+
 **内置功能**
 
-🔍 Insight 站内搜索 &nbsp;·&nbsp; ⚡ PJAX 无刷新切换 &nbsp;·&nbsp; 📑 文章目录 &nbsp;·&nbsp; 💡 代码高亮与复制 &nbsp;·&nbsp; 🖼️ 图库 &nbsp;·&nbsp; 📡 Atom RSS &nbsp;·&nbsp; ✨ 启动动画与进度条
+🔍 Insight 站内搜索 &nbsp;·&nbsp; ⚡ PJAX 无刷新切换 &nbsp;·&nbsp; 📑 文章目录 &nbsp;·&nbsp; 💡 代码高亮与复制 &nbsp;·&nbsp; 🖼️ 图库 &nbsp;·&nbsp; 📡 Atom RSS（中英各一份） &nbsp;·&nbsp; 🌐 中英双语站点 &nbsp;·&nbsp; ✨ 启动动画与进度条
 
 ---
 
