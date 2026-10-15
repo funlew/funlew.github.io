@@ -2,7 +2,7 @@
  *
  * Hexo turns every non-Markdown file under source/ into a page whose layout is
  * false. Because "_static/**" is un-ignored by the include setting in
- * _config.yml, this site's own stylesheets and scripts land in that set, and
+ * _config.zh.yml, this site's own stylesheets and scripts land in that set, and
  * the insight generator of hexo-component-inferno maps all of locals.pages into
  * /content.json without filtering. They therefore reach the search box as
  * entries with an empty title, and their source matches code-related keywords.

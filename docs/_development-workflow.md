@@ -64,10 +64,10 @@ source/          博客内容（_posts 文章、_attach 配图、_static 资源�
 themes/icarus/   Icarus 主题源码（纳入版本管理，不是 submodule）
 tools/           构建脚手架：prepare-i18n.mjs 拆分双语源树，build.mjs 串联两次生成
 .build/          双语构建的中间产物（每次构建重新生成，已 gitignore，不要手改）
-_config.en.yml   英文站的配置覆盖（中文站用 _config.yml）
+_config.en.yml   英文站的配置覆盖（中文站用 _config.zh.yml）
 ```
 
-`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `_config.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
+`source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `_config.zh.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
 
 **`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。新增文档请遵守，并同步更新 `README.md` 的索引以及文档之间的互链。
 
@@ -91,7 +91,7 @@ git push                     # 直接推送到 dev-fix
 | 改动位置 | 最低验证 |
 | --- | --- |
 | `source/_posts/` 文章内容 | `npm run server` / `npm run server:en` 看两种语言的渲染结果 |
-| `_config.yml` / `_config.en.yml` / `_config.icarus.yml` | `npm run build` 完整构建 |
+| `_config.zh.yml` / `_config.en.yml` / `_config.icarus.yml` | `npm run build` 完整构建 |
 | `scripts/` 下的脚本 | `npm run clean` + `npm run build` + 看构建日志 |
 | `tools/` 下的构建脚本 | `npm run clean` + `npm run build`，并确认 `.build/` 与 `public/` 结构 |
 | `themes/icarus/` 主题源码 | `npm run clean` + `npm run build` |
@@ -120,7 +120,7 @@ bluebird.filter([ctx.theme_script_dir, ctx.script_dir], ...)
 
 ```
 tools/prepare-i18n.mjs   source/ → .build/zh、.build/en（拆分语言、挑出 *_en 字段、生成 _data/i18n.json）
-hexo generate            .build/zh → public/zh（_config.yml），.build/en → public/en（+_config.en.yml）
+hexo generate            .build/zh → public/zh（_config.zh.yml），.build/en → public/en（+_config.en.yml）
 tools/build.mjs 收尾      public/index.html 语言选择页、旧地址重定向、两种语言的链接交叉检查
 ```
 

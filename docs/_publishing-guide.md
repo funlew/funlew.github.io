@@ -50,7 +50,7 @@ public/about/**     线上旧地址的重定向页，跳转到 /zh/ 下同名页
 
 ### 双语内容（中文 / 英文）
 
-中文站 `/zh/` 和英文站 `/en/` 是两次独立的构建（`_config.yml` 与 `_config.en.yml`），各自有首页、归档、分类、标签、搜索索引和 RSS，因此**两种语言都能被搜索引擎单独收录**。导航栏右上角的语言按钮打开同一页面的另一种语言版本；页面没有译文时回落到该语言的首页。
+中文站 `/zh/` 和英文站 `/en/` 是两次独立的构建（`_config.zh.yml` 与 `_config.en.yml`），各自有首页、归档、分类、标签、搜索索引和 RSS，因此**两种语言都能被搜索引擎单独收录**。导航栏右上角的语言按钮打开同一页面的另一种语言版本；页面没有译文时回落到该语言的首页。
 
 两种语言的**源文件是同一份**，构建时由 `tools/prepare-i18n.mjs` 拆分：正文各占一个 `lang-block`，元数据用 `*_en` 字段。没有英文版的文件只进中文站，等译文补齐后自动出现在英文站（`npm run build` 会列出「还没有英文版」的文件）。
 
@@ -188,9 +188,9 @@ permalink: /2026-10-15-what-is-immunefi/
 
 ### 为什么目录名带下划线
 
-Hexo 默认忽略所有以 `_` 开头的文件和目录。这些目录通过 `_config.yml` 的 `include` 字段显式放行：
+Hexo 默认忽略所有以 `_` 开头的文件和目录。这些目录通过 `_config.zh.yml` 的 `include` 字段显式放行：
 
-```100:104:../_config.yml
+```100:104:../_config.zh.yml
 include:
   - _about/**
   - _attach/**
@@ -238,7 +238,7 @@ tags:
 
 **URL 格式**
 
-`_config.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
+`_config.zh.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
 
 ```
 source/_posts/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi.md
@@ -262,7 +262,7 @@ cover: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi
 thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
 ```
 
-封面图放在 `_attach` 的分类目录下，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
+封面图放在 `_attach` 的分类目录下，由 `_config.zh.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
 
 **slug 命名建议**
 
@@ -305,7 +305,7 @@ top: false
 | `top` | 否 | `true` 时置顶，标题前显示图钉图标 |
 | `updated` | 否 | 与 `date` 不同时，文章页额外显示更新时间 |
 | `permalink` | 否 | 覆盖默认永久链接，独立页面常用（参考 `source/_about/index.md`） |
-| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`_config.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭 |
+| `toc` | 否 | 是否显示左栏目录组件。站点默认开启（`_config.zh.yml` 的 `toc: true`），页面写 `toc: false` 可单独关闭 |
 | `title_en` | 否 | 英文标题。写了英文正文就必须写它，否则英文站会沿用中文标题（构建告警） |
 | `categories_en` | 否 | 英文分类，**与 `categories` 一一对应、顺序一致**；不写则英文版没有分类页条目 |
 | `tags_en` | 否 | 英文标签，**与 `tags` 一一对应、顺序一致**；不写则英文版没有标签页条目 |
@@ -524,7 +524,7 @@ git push
 
 ## 九、需要注意的行为
 
-- **未来时间的文章会被发布**。`_config.yml` 中 `future: true`，`date` 写未来日期也会立刻上线。
+- **未来时间的文章会被发布**。`_config.zh.yml` 中 `future: true`，`date` 写未来日期也会立刻上线。
 - **草稿不会被发布**。`render_drafts: false`，文件名以 `_` 开头或 front-matter 中 `draft: true` 的文章只在本地显示（需 `hexo server --draft` 才可见）。
 - **RSS 只输出最近 20 篇**（`feed.limit: 20`），旧文章不会出现在 `/atom.xml` 中，但归档页可完整浏览。
 - **首页分页为每页 10 篇**（`index_generator.per_page: 10`）。

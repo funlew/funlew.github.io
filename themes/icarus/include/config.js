@@ -35,7 +35,11 @@ function checkConfig(hexo) {
     if (!process.argv.includes('--icarus-dont-check-config')) {
         logger.info('=== Checking theme configurations ===');
 
-        const siteCfgFile = path.join(hexo.base_dir, '_config.yml');
+        // The site configuration of this run: `--config` may name another file
+        // (_config.zh.yml) or, with several of them, the merged _multiconfig.yml
+        // Hexo writes. Fall back to the Hexo default when neither is set.
+        const siteCfgFile = [hexo.config_path, path.join(hexo.base_dir, '_config.yml')]
+            .find(file => file && fs.existsSync(file));
         const themeSiteCfg = path.join(hexo.base_dir, '_config.icarus.yml');
         const themeDirCfg = path.join(hexo.theme_dir, '_config.yml');
         const themeCfgPaths = [themeDirCfg, themeSiteCfg].filter(cfgPath => fs.existsSync(cfgPath));
@@ -93,7 +97,7 @@ function checkConfig(hexo) {
             logger.warn(util.inspect(validation));
         }
 
-        const rootCfg = yaml.parse(fs.readFileSync(siteCfgFile));
+        const rootCfg = siteCfgFile ? yaml.parse(fs.readFileSync(siteCfgFile)) : {};
         if (rootCfg.theme_config) {
             logger.warn(`"theme_config" found in ${yellow(siteCfgFile)}.`);
             logger.warn(`Please remove theme configurations from ${yellow(siteCfgFile)}.`);

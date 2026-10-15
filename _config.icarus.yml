@@ -163,8 +163,8 @@ widgets:
                 url: /atom.xml
     # Table of contents widget configurations
     # The TOC widget is only rendered on posts/pages when "toc: true" is set
-    # in the site _config.yml, so it stays hidden by default to match the
-    # three-column layout without a contents card.
+    # in the site configuration (_config.zh.yml / _config.en.yml), so it stays
+    # hidden by default to match the three-column layout without a contents card.
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left

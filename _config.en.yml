@@ -1,11 +1,11 @@
 # English build of the site.
 #
-# Usage: hexo generate --config _config.yml,_config.en.yml
+# Usage: hexo generate --config _config.zh.yml,_config.en.yml
 # (both builds, the root language page and the redirects are produced by
 # `npm run build`, see tools/build.mjs)
 #
 # Only the keys that differ from the Chinese build live here; everything else is
-# inherited from _config.yml, which Hexo merges this file on top of.
+# inherited from _config.zh.yml, which Hexo merges this file on top of.
 
 i18n_lang: en
 language: en
