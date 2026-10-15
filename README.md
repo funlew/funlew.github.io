@@ -1,3 +1,5 @@
+[简体中文](./README.md) | [English](./README.en.md)
+
 个人博客站点：[funlew.github.io](https://funlew.github.io/)——Hexo 8 + Icarus 主题，中英双语（[`/zh/`](https://funlew.github.io/zh/) · [`/en/`](https://funlew.github.io/en/)）。
 
 工程文档统一放在 [`docs/`](./docs/) 下（`_` 前缀表示「不是博客内容」）：

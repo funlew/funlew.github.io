@@ -70,7 +70,7 @@ _config.icarus.yml  主题配置，固定在站点根目录：Hexo 只从根目�
 
 `source/` 下的下划线是 Hexo 的硬性要求：该前缀让 Hexo 跳过这些目录，必须在 `config/_config.zh.yml` 的 `include` 中显式放行。`docs/` 不在 `source/` 下，Hexo 不会处理，所以那里的下划线是纯粹的命名约定——但语义一致，都表示「不是博客内容」。
 
-**`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。新增文档请遵守，并同步更新 `_readme.md` 的索引以及文档之间的互链。
+**`docs/` 命名约定**：文件名一律使用英文小写加短横线，并以 `_` 开头，例如 `_publishing-guide.md`。需要英文版的文档以 `.en.md` 结尾与中文版配对（如 `_readme.md` / `_readme.en.md`），两版顶部互相链接，英文版里指向纯中文文档的链接注明 (Chinese)。新增文档请遵守，并同步更新 `_readme.md` 的索引以及文档之间的互链。
 
 ### 日常步骤
 
