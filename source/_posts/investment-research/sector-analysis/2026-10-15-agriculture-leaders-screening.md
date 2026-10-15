@@ -1,16 +1,16 @@
 ---
-title: 农产品板块龙头筛选：四档分位与当前位置
+title: 农产品板块龙头股怎么挑：四档分位、20 只标的（2026 年 10 月）
 date: 2026-10-15 14:00:00
 categories:
-  - [财经, 板块分析]
+  - [投资研究, 板块分析]
 tags:
   - A股
   - 农林牧渔
   - 龙头股
   - 板块分析
   - 选股
-cover: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
-thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
+cover: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
+thumbnail: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
 ---
 
 2026 年 10 月 15 日收盘，申万一级「农林牧渔」板块大幅下挫：中粮糖业 -9.70%、海南橡胶 -10.01%（跌停）、金健米业 -9.01%、农发种业 -5.10%、登海种业 -4.64%，农产品加工板块指数当日跌约 3%。
@@ -146,7 +146,7 @@ thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
 
   echarts.init(document.getElementById("agri-chart1")).setOption({
     grid: { left: 62, right: 34, top: 46, bottom: 54 },
-    tooltip: { trigger: "item", formatter: function (p) { return p.data.name + "<br/>ROE " + p.value[0] + "%<br/>毛利率 " + p.value[1] + "%<br/>市值 " + p.value[2] + " 亿"; } },
+    tooltip: { trigger: "item", formatter: function (p) { return p.data[3] + "<br/>ROE " + p.value[0] + "%<br/>毛利率 " + p.value[1] + "%<br/>市值 " + p.value[2] + " 亿"; } },
     legend: { data: ["核心龙头", "周期底部龙头", "细分冠军"], top: 6, textStyle: { fontSize: 12, color: "#4b5563" } },
     xAxis: { type: "value", name: "ROE TTM (%)", nameLocation: "middle", nameGap: 30, min: -12, max: 20, splitLine: { lineStyle: { color: "#eef1f5" } }, axisLine: { lineStyle: { color: "#d8dee7" } } },
     yAxis: { type: "value", name: "毛利率 TTM (%)", nameGap: 22, min: 0, max: 60, splitLine: { lineStyle: { color: "#eef1f5" } }, axisLine: { lineStyle: { color: "#d8dee7" } } },

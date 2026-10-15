@@ -30,10 +30,72 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 
 | 目录 | 用途 |
 | --- | --- |
-| `source/_posts/` | 文章正文所在目录，**文件名会成为永久链接** |
-| `source/_attach/` | 文章配图（封面图、插图） |
+| `source/_posts/` | 文章正文，**按分类建子目录**，文件名参与永久链接 |
+| `source/_attach/` | 文章配图，**按与 `_posts` 相同的分类目录存放** |
 | `source/_static/` | 站点级静态资源：favicon、头像、自定义 CSS/JS |
 | `source/_about/` | 关于页等独立页面 |
+
+### 分类目录结构
+
+`_posts` 与 `_attach` 都按文章分类建目录，**目录名用分类的英文翻译**，层级与分类层级一致：
+
+```
+source/_posts/
+├── daily-notes/                                     # 日常随笔
+│   └── 2026-10-13-hello-world.md
+├── cybersecurity/                                   # 网络安全
+│   ├── information-gathering/                       #   信息搜集
+│   │   └── 2026-10-15-subdomain-enumeration-asset-discovery.md
+│   └── vulnerability-research/                      #   漏洞挖掘
+│       ├── 2026-10-14-email-takeover-race-condition.md
+│       ├── 2026-10-15-login-to-rce-web-pentest.md
+│       ├── 2026-10-15-web3-career-paths.md
+│       └── 2026-10-15-what-is-immunefi.md
+└── investment-research/                             # 投资研究
+    └── sector-analysis/                             #   板块分析
+        └── 2026-10-15-agriculture-leaders-screening.md
+```
+
+封面图放在 `_attach` 下**对应的同名分类目录**：
+
+```
+source/_attach/
+├── daily-notes/2026-10-13-hello-world-cover.jpg
+├── cybersecurity/
+│   ├── information-gathering/2026-10-15-...-cover.jpg
+│   └── vulnerability-research/2026-10-15-...-cover.jpg
+└── investment-research/sector-analysis/2026-10-15-...-cover.jpg
+```
+
+**分类中文名 → 目录英文名对照**：
+
+| 中文分类 | 目录名 |
+| --- | --- |
+| 日常随笔 | `daily-notes` |
+| 网络安全 | `cybersecurity` |
+| 信息搜集 | `information-gathering` |
+| 漏洞挖掘 | `vulnerability-research` |
+| 投资研究 | `investment-research` |
+| 板块分析 | `sector-analysis` |
+
+**新增分类时**：先在 `_posts` 和 `_attach` 下建同名英文目录，再在文章 front-matter 的 `categories` 里填中文分类名。两者要对应。
+
+**注意**：目录名**不能以下划线开头**（会被 Hexo 忽略），也**不要用中文**（URL 会被编码成一长串）。
+
+### URL 与目录的关系
+
+`permalink` 为 `:title/`，而 `:title` 是**相对 `_posts` 的完整路径**——所以目录层级会直接出现在 URL 中：
+
+```
+source/_posts/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi.md
+  → https://funlew.github.io/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/
+```
+
+**移动文章到其他分类目录会改变 URL**，已有的外部链接会失效。若某篇文章需要固定 URL，可在 front-matter 里单独指定：
+
+```yaml
+permalink: /2026-10-15-what-is-immunefi/
+```
 
 ### 为什么目录名带下划线
 
@@ -52,13 +114,13 @@ include:
 
 ## 三、创建文章
 
-用命令生成骨架，避免手写 front-matter 出错：
+用命令生成骨架，避免手写 front-matter 出错。**用 `--path` 直接指定分类目录**：
 
 ```bash
-npx hexo new "我的新文章"
+npx hexo new "文章标题" --path cybersecurity/vulnerability-research/my-new-post
 ```
 
-会在 `source/_posts/我的新文章.md` 生成基于 `scaffolds/post.md` 的模板：
+会在 `source/_posts/cybersecurity/vulnerability-research/my-new-post.md` 生成基于 `scaffolds/post.md` 的模板：
 
 ```yaml
 ---
@@ -67,6 +129,8 @@ date: 2026-10-14 21:30:00
 tags:
 ---
 ```
+
+**注意**：默认的 `hexo new "标题"` 会把文件建在 `source/_posts/` 根目录下（不带分类目录）——生成后要么手动移到正确目录，要么直接用上面的 `--path` 参数。目录要用分类的英文名，见上一节的对照表。
 
 ### 文件、封面与链接命名
 
@@ -85,30 +149,31 @@ tags:
 
 **URL 格式**
 
-`_config.yml` 中 `permalink: :title/`（不带日期中间层）—— 文件名（不含 `.md`）直接作为 URL 路径：
+`_config.yml` 中 `permalink: :title/`——`:title` 是**相对 `_posts` 的完整路径**（含分类目录），所以 URL 会带上分类层级：
 
 ```
-source/_posts/2026-10-15-agriculture-leaders-screening.md
+source/_posts/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening.md
                    ↓
-URL: /2026-10-15-agriculture-leaders-screening/
+URL: /investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening/
 ```
 
 **为什么这样**
 
 - 文件名带日期前缀：一眼看出发布日期，避免多篇同主题文章混淆
-- 不用 `/YYYY/MM/DD/` 中间层：URL 不会出现「2026-10-15/2026-10-15-...」的日期重复，也更短
-- 封面与文章 slug 保持一致：通过文件名前缀就能在 `source/_attach/` 下找到对应文章
+- URL 带分类路径：链接自带分类语义，从地址就能看出文章归属
+- 不用 `/YYYY/MM/DD/` 中间层：URL 不会出现「2026-10-15/2026-10-15-...」的日期重复
+- 封面与文章 slug 保持一致：通过文件名前缀就能在 `_attach` 的对应分类目录下找到封面
 
 **front-matter 引用**
 
-封面字段必须使用新命名：
+封面字段的路径要与 `_attach` 下的分类目录一致：
 
 ```yaml
-cover: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
-thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
+cover: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
+thumbnail: /_attach/investment-research/sector-analysis/2026-10-15-agriculture-leaders-screening-cover.jpg
 ```
 
-封面图实际放在 `source/_attach/`，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
+封面图放在 `_attach` 的分类目录下，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
 
 **slug 命名建议**
 
@@ -353,9 +418,14 @@ git push
 - [ ] 本地 `npm run server` 预览无异常
 - [ ] `npm run clean && npm run build` 构建无报错
 - [ ] 文件名为英文短横线，链接美观
-- [ ] `cover` 图片已上传到 `source/_attach/` 并在正文中用绝对路径引用
+- [ ] **文章放在正确的分类目录**——`source/_posts/<分类英文目录>/` 下，层级与 `categories` 一致
+- [ ] **封面放在对应的分类目录**——`source/_attach/<相同分类路径>/`，且 `cover` / `thumbnail` 字段的路径与之一致
 - [ ] `categories` / `tags` 无拼写错误（错字会生成新的分类页）
 - [ ] 图片文件名全小写，避免部署到 Linux 后 404
+- [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL** / 分类都要对得上）
+- [ ] **SEO 标题**——含核心搜索关键词、长度 15-30 字、保留发布时间或数量感等有信息量的修饰
+- [ ] **嵌入 HTML 报告**（如有）——CSS 类名加文章专属前缀、JS 用 IIFE 包裹、ECharts/Chart.js 等 CDN 放在 IIFE 之前、CSS 变量（`var(--card)` 等）在容器内重定义（Icarus 主题不提供）
+- [ ] **commit / push 分开**——本地 `git commit` 可以自由做，`git push` 等显式命令（避免误推）
 
 ---
 
