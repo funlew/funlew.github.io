@@ -41,8 +41,6 @@ npm ci           # 仓库不含 node_modules，首次必须先安装
 
 ```
 source/_posts/
-├── daily-notes/                                     # 日常随笔
-│   └── 2026-10-13-hello-world.md
 ├── cybersecurity/                                   # 网络安全
 │   ├── information-gathering/                       #   信息搜集
 │   │   └── 2026-10-15-subdomain-enumeration-asset-discovery.md
@@ -51,36 +49,66 @@ source/_posts/
 │       ├── 2026-10-15-login-to-rce-web-pentest.md
 │       ├── 2026-10-15-web3-career-paths.md
 │       └── 2026-10-15-what-is-immunefi.md
-└── investment-research/                             # 投资研究
-    └── sector-analysis/                             #   板块分析
-        └── 2026-10-15-agriculture-leaders-screening.md
+├── investment-research/                             # 投资研究
+│   └── sector-analysis/                             #   板块分析
+│       └── 2026-10-15-agriculture-leaders-screening.md
+└── daily-notes/                                     # 日常随笔
+    └── 2026-10-13-hello-world.md
 ```
 
 封面图放在 `_attach` 下**对应的同名分类目录**：
 
 ```
 source/_attach/
-├── daily-notes/2026-10-13-hello-world-cover.jpg
 ├── cybersecurity/
 │   ├── information-gathering/2026-10-15-...-cover.jpg
 │   └── vulnerability-research/2026-10-15-...-cover.jpg
-└── investment-research/sector-analysis/2026-10-15-...-cover.jpg
+├── investment-research/sector-analysis/2026-10-15-...-cover.jpg
+└── daily-notes/2026-10-13-hello-world-cover.jpg
 ```
 
 **分类中文名 → 目录英文名对照**：
 
 | 中文分类 | 目录名 |
 | --- | --- |
-| 日常随笔 | `daily-notes` |
 | 网络安全 | `cybersecurity` |
 | 信息搜集 | `information-gathering` |
 | 漏洞挖掘 | `vulnerability-research` |
 | 投资研究 | `investment-research` |
 | 板块分析 | `sector-analysis` |
+| 日常随笔 | `daily-notes` |
 
 **新增分类时**：先在 `_posts` 和 `_attach` 下建同名英文目录，再在文章 front-matter 的 `categories` 里填中文分类名。两者要对应。
 
 **注意**：目录名**不能以下划线开头**（会被 Hexo 忽略），也**不要用中文**（URL 会被编码成一长串）。
+
+### 分类显示顺序
+
+左侧栏「文章分类」的一级分类不按名称排序，而是按固定顺序显示：
+
+| 顺序 | 一级分类 |
+| --- | --- |
+| 1 | 网络安全 |
+| 2 | 投资研究 |
+| 3 | 日常随笔 |
+
+顺序在 `_config.icarus.yml` 的 categories widget 的 `customOrder` 中配置：
+
+```yaml
+        customOrder:
+            - 网络安全
+            - 投资研究
+            - 日常随笔
+```
+
+该选项由 `themes/icarus/layout/widget/categories.jsx` 读取（覆盖主题默认的按名称排序）。
+
+**规则**：
+
+- 数组里的名字必须与 front-matter 的 `categories` 中文名**完全一致**，写错不会报错，只是该分类不参与排序
+- **新分类未列入数组时自动排在最后**，不影响已定顺序；需要固定位置时把名字插进数组
+- 未列出的分类之间、以及所有子分类（如「漏洞挖掘」）仍按名称升序排列
+- 调整顺序属于站点配置改动，同样走 `dev-fix` → PR 流程
 
 ### URL 与目录的关系
 
@@ -252,7 +280,7 @@ cats = cats.filter(cat => {
 
 对象落到 `` `${cat}` `` 上就被字符串化了。本站的「网络安全 / 赏金SRC / 信息搜集」即按上面的数组对写法预留，写第一篇相关文章时填进去，左侧就会出现该层级。
 
-**分类由文章驱动**：没有任何文章使用的分类不会出现在侧栏，所以建分类的实质是给文章挂分类，而不是单独创建。
+**分类由文章驱动**：没有任何文章使用的分类不会出现在侧栏，所以建分类的实质是给文章挂分类，而不是单独创建。一级分类在侧栏中的显示顺序是固定的（网络安全 → 投资研究 → 日常随笔），配置方式见「二、目录约定」中的「分类显示顺序」。
 
 ---
 
@@ -421,6 +449,7 @@ git push
 - [ ] **文章放在正确的分类目录**——`source/_posts/<分类英文目录>/` 下，层级与 `categories` 一致
 - [ ] **封面放在对应的分类目录**——`source/_attach/<相同分类路径>/`，且 `cover` / `thumbnail` 字段的路径与之一致
 - [ ] `categories` / `tags` 无拼写错误（错字会生成新的分类页）
+- [ ] **新分类的显示顺序已处理**——未列入 `customOrder` 的分类会排在侧栏最后，需要固定位置时把名字加入 `_config.icarus.yml`（见「分类显示顺序」）
 - [ ] 图片文件名全小写，避免部署到 Linux 后 404
 - [ ] **README 文章索引已同步**——新增 / 重命名 / 改分类 / 改标题 / **改目录** 后，`README.md` 的「📰 最新文章」表格同步更新（按发布时间倒序，标题 / **链接 URL** / 分类都要对得上）
 - [ ] **SEO 标题**——含核心搜索关键词、长度 15-30 字、保留发布时间或数量感等有信息量的修饰
