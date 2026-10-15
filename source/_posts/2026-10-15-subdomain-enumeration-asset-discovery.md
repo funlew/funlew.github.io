@@ -9,8 +9,8 @@ tags:
   - 信息收集
   - OSINT
   - 攻击面
-cover: /_attach/asset-discovery-cover.jpg
-thumbnail: /_attach/asset-discovery-cover.jpg
+cover: /_attach/2026-10-15-subdomain-enumeration-asset-discovery-cover.jpg
+thumbnail: /_attach/2026-10-15-subdomain-enumeration-asset-discovery-cover.jpg
 ---
 
 红队刚入场时手里没有内网权限，第一件事不是打官网，而是搞清楚目标在公网上到底暴露了什么。攻击者通常不会优先攻击每天有人维护的站点，而是先找那些企业自己都没发现、没登记、没防护的遗留资产。
