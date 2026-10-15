@@ -68,22 +68,54 @@ tags:
 ---
 ```
 
-### 关于文件名与链接
+### 文件、封面与链接命名
 
-`_config.yml` 中 `new_post_name: :title.md`，即文件名直接取命令中的标题原文。默认永久链接为：
+博客统一使用 `YYYY-MM-DD-slug` 命名格式，便于追溯，也使 URL 干净无重复。
 
-```17:18:../_config.yml
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+**文件命名**
+
+| 文件 | 格式 | 示例 |
+| --- | --- | --- |
+| 文章 | `YYYY-MM-DD-slug.md` | `2026-10-15-agriculture-leaders-screening.md` |
+| 封面 | `YYYY-MM-DD-slug-cover.jpg` | `2026-10-15-agriculture-leaders-screening-cover.jpg` |
+
+- `YYYY-MM-DD` 为发布日期，对应 front-matter 的 `date` 字段
+- `slug` 为英文小写加短横线，与文章主题对应（不是中文标题）
+- 同一篇文章的封面图命名：`<文章文件名去掉 .md>-cover.<扩展名>`
+
+**URL 格式**
+
+`_config.yml` 中 `permalink: :title/`（不带日期中间层）—— 文件名（不含 `.md`）直接作为 URL 路径：
+
+```
+source/_posts/2026-10-15-agriculture-leaders-screening.md
+                   ↓
+URL: /2026-10-15-agriculture-leaders-screening/
 ```
 
-所以 `source/_posts/我的新文章.md` 发布后的地址是：
+**为什么这样**
 
-```
-https://funlew.github.io/2026/10/14/我的新文章/
+- 文件名带日期前缀：一眼看出发布日期，避免多篇同主题文章混淆
+- 不用 `/YYYY/MM/DD/` 中间层：URL 不会出现「2026-10-15/2026-10-15-...」的日期重复，也更短
+- 封面与文章 slug 保持一致：通过文件名前缀就能在 `source/_attach/` 下找到对应文章
+
+**front-matter 引用**
+
+封面字段必须使用新命名：
+
+```yaml
+cover: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
+thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
 ```
 
-中文会被 URL 编码，链接不够美观。**建议**：文件名改用英文短横线命名（如 `my-new-post.md`），标题仍写中文，这样链接是 `/2026/10/14/my-new-post/`。如需完全自定义，可用 front-matter 的 `permalink` 字段覆盖。
+封面图实际放在 `source/_attach/`，由 `_config.yml` 的 `include: - _attach/**` 放行，原样复制到 `public/_attach/`。
+
+**slug 命名建议**
+
+- 优先复用文章核心主题词，例如 `email-takeover-race-condition`、`agriculture-leaders-screening`
+- 不要用中文 slug（hexo 会 URL 编码，链接变长且难读）
+- 多篇文章主题相近时，可在 slug 末尾加修饰词避免冲突，例如 `xxx-intro`、`xxx-deep-dive`
+- 如果未来调整 permalink 格式，记得同步更新 README 的文章索引
 
 ---
 
