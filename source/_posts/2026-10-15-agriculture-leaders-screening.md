@@ -146,7 +146,7 @@ thumbnail: /_attach/2026-10-15-agriculture-leaders-screening-cover.jpg
 
   echarts.init(document.getElementById("agri-chart1")).setOption({
     grid: { left: 62, right: 34, top: 46, bottom: 54 },
-    tooltip: { trigger: "item", formatter: function (p) { return p.data.name + "<br/>ROE " + p.value[0] + "%<br/>毛利率 " + p.value[1] + "%<br/>市值 " + p.value[2] + " 亿"; } },
+    tooltip: { trigger: "item", formatter: function (p) { return p.data[3] + "<br/>ROE " + p.value[0] + "%<br/>毛利率 " + p.value[1] + "%<br/>市值 " + p.value[2] + " 亿"; } },
     legend: { data: ["核心龙头", "周期底部龙头", "细分冠军"], top: 6, textStyle: { fontSize: 12, color: "#4b5563" } },
     xAxis: { type: "value", name: "ROE TTM (%)", nameLocation: "middle", nameGap: 30, min: -12, max: 20, splitLine: { lineStyle: { color: "#eef1f5" } }, axisLine: { lineStyle: { color: "#d8dee7" } } },
     yAxis: { type: "value", name: "毛利率 TTM (%)", nameGap: 22, min: 0, max: 60, splitLine: { lineStyle: { color: "#eef1f5" } }, axisLine: { lineStyle: { color: "#d8dee7" } } },
