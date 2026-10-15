@@ -8,8 +8,8 @@ tags:
   - 账号接管
   - 竞态条件
   - TOCTOU
-cover: /_attach/race-condition-cover.jpg
-thumbnail: /_attach/race-condition-cover.jpg
+cover: /_attach/2026-10-14-email-takeover-race-condition-cover.jpg
+thumbnail: /_attach/2026-10-14-email-takeover-race-condition-cover.jpg
 ---
 
 邮箱改绑功能里一个容易被忽略的时序问题：新邮箱先被分配到账号上，「这个邮箱是否受保护」的校验才异步执行。中间那段窗口，足以让攻击者用「目标邮箱 + 自己的密码」抢先登录完成接管。

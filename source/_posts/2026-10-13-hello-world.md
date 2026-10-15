@@ -1,10 +1,10 @@
 ---
 title: Hello，world！
 date: 2026-10-13 22:00:00
-cover: /_attach/hello-world-cover.jpg
-thumbnail: /_attach/hello-world-cover.jpg
+cover: /_attach/2026-10-13-hello-world-cover.jpg
+thumbnail: /_attach/2026-10-13-hello-world-cover.jpg
 categories:
-  - 随笔
+  - 日常随笔
 tags:
   - Hexo
   - Icarus

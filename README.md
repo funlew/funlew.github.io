@@ -11,9 +11,10 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
-| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/2026/10/15/subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
-| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026/10/14/email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
-| 🔗 [Hello，world！](https://funlew.github.io/2026/10/13/hello-world/) | 随笔 | 2026-10-13 |
+| 🔗 [农产品板块龙头筛选：四档分位与当前位置](https://funlew.github.io/2026-10-15-agriculture-leaders-screening/) | 财经 / 板块分析 | 2026-10-15 |
+| 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
+| 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |
+| 🔗 [Hello，world！](https://funlew.github.io/2026-10-13-hello-world/) | 日常随笔 | 2026-10-13 |
 
 
 ---
