@@ -34,7 +34,7 @@
         '订阅更新': 'Subscribe for updates',
         '订阅': 'Subscribe',
         '广告': 'Advertisement',
-        '阅读更多': 'Read more',
+        '完整阅读': 'Read more',
         '评论': 'Comments',
         '复制': 'Copy',
         '已复制！': 'Copied!',
