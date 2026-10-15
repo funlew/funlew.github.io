@@ -190,17 +190,15 @@ widgets:
     # Recommendation links widget configurations
     # A value that is a URL string is rendered as a single entry. A mapping
     # value becomes a second level heading, and its keys become the entries
-    # nested under that heading, which is how "图片素材" groups Gratisography.
+    # nested under that heading (see themes/icarus/layout/widget/links.jsx).
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: links
         # Names and URLs of the sites
         links:
-            博客主题:
-                Icarus: https://ppoffice.github.io/hexo-theme-icarus/
-            图片素材:
-                Gratisography: https://gratisography.com/
+            Icarus: https://ppoffice.github.io/hexo-theme-icarus/
+            Gratisography: https://gratisography.com/
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
