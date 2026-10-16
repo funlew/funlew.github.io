@@ -6,6 +6,7 @@
 | --- | --- |
 | [📝 Publishing guide](./_publishing-guide.md) | Write a post and get it online: directory conventions, front-matter fields, body syntax, local preview, publishing and rollback (Chinese) |
 | [🛠️ Development workflow](./_development-workflow.md) | Branch model (`dev-fix` work branch / `main` deploy branch), commit conventions, verification requirements, branch protection, dependency updates (Chinese) |
+| [📋 Changelog](./_changelog.md) | Improvement notes and completed changes, one dated section per entry, newest first (Chinese) |
 
 ---
 
