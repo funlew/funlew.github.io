@@ -113,7 +113,9 @@ source/_posts/
 │   └── vulnerability-research/                      #   漏洞挖掘
 │       ├── 2026-10-14-email-takeover-race-condition.md
 │       ├── 2026-10-15-login-to-rce-web-pentest.md
-│       ├── 2026-10-15-web3-career-paths.md
+│       └── 2026-10-15-web3-career-paths.md
+├── crypto-industry/                                 # 加密行业
+│   └── web3-security/                               #   Web3安全
 │       └── 2026-10-15-what-is-immunefi.md
 └── daily-notes/                                     # 日常随笔
     └── 2026-10-13-hello-world.md
@@ -126,6 +128,8 @@ source/_attach/
 ├── cybersecurity/
 │   ├── information-gathering/2026-10-15-...-cover.jpg
 │   └── vulnerability-research/2026-10-15-...-cover.jpg
+├── crypto-industry/
+│   └── web3-security/2026-10-15-...-cover.jpg
 └── daily-notes/2026-10-13-hello-world-cover.jpg
 ```
 
@@ -136,6 +140,8 @@ source/_attach/
 | 网络安全 | `cybersecurity` |
 | 信息搜集 | `information-gathering` |
 | 漏洞挖掘 | `vulnerability-research` |
+| 加密行业 | `crypto-industry` |
+| Web3安全 | `web3-security` |
 | 日常随笔 | `daily-notes` |
 
 **新增分类时**：先在 `_posts` 和 `_attach` 下建同名英文目录，再在文章 front-matter 的 `categories` 里填中文分类名。两者要对应。

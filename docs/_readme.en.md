@@ -14,7 +14,7 @@
 | Title | Category | Date |
 | --- | --- | --- |
 | 🔗 [5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap](https://funlew.github.io/en/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths/) | Cybersecurity / Vulnerability Research | 2026-10-15 |
-| 🔗 [What Is Immunefi: How the Web3 Bug Bounty Platform Works and What the Numbers Say](https://funlew.github.io/en/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi/) | Cybersecurity / Vulnerability Research | 2026-10-15 |
+| 🔗 [What Is Immunefi: How the Web3 Bug Bounty Platform Works and What the Numbers Say](https://funlew.github.io/en/crypto-industry/web3-security/2026-10-15-what-is-immunefi/) | Crypto Industry / Web3 Security | 2026-10-15 |
 | 🔗 [From Login Form to RCE: A 5-Layer Attack Chain Methodology for Web Pentests](https://funlew.github.io/en/cybersecurity/vulnerability-research/2026-10-15-login-to-rce-web-pentest/) | Cybersecurity / Vulnerability Research | 2026-10-15 |
 | 🔗 [Beneath the Iceberg: Unclaimed Subdomains Are Exposing Your Infrastructure](https://funlew.github.io/en/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery/) | Cybersecurity / Information Gathering | 2026-10-15 |
 | 🔗 [Account Takeover Through an Email Change That Allocates Before It Verifies](https://funlew.github.io/en/cybersecurity/vulnerability-research/2026-10-14-email-takeover-race-condition/) | Cybersecurity / Vulnerability Research | 2026-10-14 |

@@ -3,9 +3,9 @@ title: Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据
 title_en: 'What Is Immunefi: How the Web3 Bug Bounty Platform Works and What the Numbers Say'
 date: 2026-10-15 18:00:00
 categories:
-  - [网络安全, 漏洞挖掘]
+  - [加密行业, Web3安全]
 categories_en:
-  - [Cybersecurity, Vulnerability Research]
+  - [Crypto Industry, Web3 Security]
 tags:
   - Web3 安全
   - 漏洞悬赏
@@ -20,8 +20,8 @@ tags_en:
   - Smart Contracts
   - DeFi
   - White Hat
-cover: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
-thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-what-is-immunefi-cover.jpg
+cover: /_attach/crypto-industry/web3-security/2026-10-15-what-is-immunefi-cover.jpg
+thumbnail: /_attach/crypto-industry/web3-security/2026-10-15-what-is-immunefi-cover.jpg
 ---
 
 <div class="lang-block" data-lang="zh-CN" lang="zh-CN">
