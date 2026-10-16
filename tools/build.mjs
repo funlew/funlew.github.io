@@ -27,7 +27,10 @@ import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
-const HEXO = path.join(ROOT, 'node_modules', '.bin', 'hexo');
+// The Hexo entry script, run through the current Node binary. node_modules/.bin/hexo
+// is a shell script on Unix and only a .cmd shim on Windows, so spawning it directly
+// fails on Windows; going through process.execPath + the bin script works everywhere.
+const HEXO = path.join(ROOT, 'node_modules', 'hexo', 'bin', 'hexo');
 const SOURCE_DIR = path.join(ROOT, 'source');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const BUILD_DIR = path.join(ROOT, '.build');
@@ -47,7 +50,7 @@ function run(command, args) {
 }
 
 const prepare = () => run(process.execPath, [path.join(ROOT, 'tools', 'prepare-i18n.mjs')]);
-const hexo = args => run(HEXO, args);
+const hexo = args => run(process.execPath, [HEXO, ...args]);
 
 /** Whether a preview port can be used (all interfaces, like hexo-server does). */
 function portFree(port) {
@@ -243,7 +246,7 @@ async function main() {
         const port = await previewPort(LANGS[lang].port);
         // Spawned asynchronously (unlike the build steps): the watcher above only
         // fires while the event loop of this process keeps running.
-        const server = spawn(HEXO, ['server', '-p', String(port), ...LANGS[lang].hexo], {
+        const server = spawn(process.execPath, [HEXO, 'server', '-p', String(port), ...LANGS[lang].hexo], {
             cwd: ROOT,
             stdio: 'inherit'
         });
