@@ -14,6 +14,7 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
+| 🔗 [REA 是什么：让 AI 智能体做逆向工程的 MCP 服务](https://funlew.github.io/zh/artificial-intelligence/agents/2026-10-16-what-is-rea/) | 人工智能 / 智能体 | 2026-10-16 |
 | 🔗 [Jev 是什么：TypeSafe「系统一模型」的机制、基准与上手路径](https://funlew.github.io/zh/artificial-intelligence/models/2026-10-16-what-is-jev/) | 人工智能 / 模型 | 2026-10-16 |
 | 🔗 [Web3 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/zh/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | 加密行业 / web3转型 | 2026-10-15 |
 | 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/zh/crypto-industry/web3-security/2026-10-15-what-is-immunefi/) | 加密行业 / Web3安全 | 2026-10-15 |

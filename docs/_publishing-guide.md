@@ -108,6 +108,8 @@ tags_en:
 ```
 source/_posts/
 ├── artificial-intelligence/                         # 人工智能
+│   ├── agents/                                      #   智能体
+│   │   └── 2026-10-16-what-is-rea.md
 │   └── models/                                      #   模型
 │       └── 2026-10-16-what-is-jev.md
 ├── cybersecurity/                                   # 网络安全
@@ -130,6 +132,7 @@ source/_posts/
 ```
 source/_attach/
 ├── artificial-intelligence/
+│   ├── agents/2026-10-16-...-cover.jpg
 │   └── models/2026-10-16-...-cover.jpg
 ├── cybersecurity/
 │   ├── information-gathering/2026-10-15-...-cover.jpg
@@ -145,6 +148,7 @@ source/_attach/
 | 中文分类 | 目录名 |
 | --- | --- |
 | 人工智能 | `artificial-intelligence` |
+| 智能体 | `agents` |
 | 模型 | `models` |
 | 网络安全 | `cybersecurity` |
 | 信息搜集 | `information-gathering` |

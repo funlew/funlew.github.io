@@ -14,6 +14,7 @@
 
 | Title | Category | Date |
 | --- | --- | --- |
+| 🔗 [What Is REA: An MCP Service That Lets AI Agents Reverse Engineer Anything](https://funlew.github.io/en/artificial-intelligence/agents/2026-10-16-what-is-rea/) | Artificial Intelligence / Agents | 2026-10-16 |
 | 🔗 [What Is Jev: How TypeSafe's System One Model Works, What It Costs and How to Try It](https://funlew.github.io/en/artificial-intelligence/models/2026-10-16-what-is-jev/) | Artificial Intelligence / Models | 2026-10-16 |
 | 🔗 [5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap](https://funlew.github.io/en/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | Crypto Industry / Web3 Transition | 2026-10-15 |
 | 🔗 [What Is Immunefi: How the Web3 Bug Bounty Platform Works and What the Numbers Say](https://funlew.github.io/en/crypto-industry/web3-security/2026-10-15-what-is-immunefi/) | Crypto Industry / Web3 Security | 2026-10-15 |
