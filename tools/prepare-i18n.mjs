@@ -83,7 +83,10 @@ function routePath(file, data) {
     if (rel.startsWith('_posts/')) {
         return `${rel.slice('_posts/'.length)}/index.html`;
     }
-    return rel.endsWith('/index') ? `${rel}.html`.replace(/\/index\.html$/, '/index.html') : `${rel}.html`;
+    // Pages live in underscored directories such as _about, and Hexo drops that
+    // underscore when it writes the URL (public/about/index.html). Strip one
+    // leading underscore here so the recorded route matches the built file.
+    return `${rel.replace(/^_/, '')}.html`;
 }
 
 /** Split a body into its shared text and its per-language blocks. */
