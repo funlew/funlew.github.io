@@ -3,9 +3,9 @@ title: Web3 安全赚钱的 5 条路径：门槛、收益与真实差距
 title_en: '5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap'
 date: 2026-10-15 19:00:00
 categories:
-  - [网络安全, 漏洞挖掘]
+  - [加密行业, web3转型]
 categories_en:
-  - [Cybersecurity, Vulnerability Research]
+  - [Crypto Industry, Web3 Transition]
 tags:
   - Web3 安全
   - 白帽黑客
@@ -20,8 +20,8 @@ tags_en:
   - Audit Contest
   - Smart Contracts
   - Career Path
-cover: /_attach/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths-cover.jpg
-thumbnail: /_attach/cybersecurity/vulnerability-research/2026-10-15-web3-career-paths-cover.jpg
+cover: /_attach/crypto-industry/web3-transition/2026-10-15-web3-career-paths-cover.jpg
+thumbnail: /_attach/crypto-industry/web3-transition/2026-10-15-web3-career-paths-cover.jpg
 ---
 
 <div class="lang-block" data-lang="zh-CN" lang="zh-CN">
