@@ -186,7 +186,7 @@ source/_attach/
 - 数组里的名字必须与 front-matter 的 `categories` 中文名**完全一致**，写错不会报错，只是该分类不参与排序
 - **新分类未列入数组时自动排在最后**，不影响已定顺序；需要固定位置时把名字插进数组
 - 未列出的分类之间、以及所有子分类（如「漏洞挖掘」）仍按名称升序排列
-- 调整顺序属于站点配置改动，同样走 `dev-fix` → PR 流程
+- 调整顺序属于站点配置改动，同样走 `agent/dev-fix` → PR 流程
 
 ### URL 与目录的关系
 
@@ -499,16 +499,16 @@ npm run build
 
 ## 七、发布
 
-文章先提交到工作分支 `dev-fix`（仓库规则禁止直推 `main`）：
+文章先提交到工作分支 `agent/dev-fix`（仓库规则禁止直推 `main`）：
 
 ```bash
-git checkout dev-fix
+git checkout agent/dev-fix
 git add source/_posts/我的新文章.md source/_attach/my-cover.jpg
 git commit -m "post: add 我的新文章"
 git push
 ```
 
-推送后打开 https://github.com/funlew/funlew.github.io/compare/main...dev-fix 创建 Pull Request，合并到 `main` 即触发部署。
+推送后打开 https://github.com/funlew/funlew.github.io/compare/main...agent/dev-fix 创建 Pull Request，合并到 `main` 即触发部署。
 
 部署流程（`.github/workflows/deploy.yml`）：
 

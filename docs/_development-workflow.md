@@ -11,20 +11,20 @@
 | 分支 | 角色 | 推送权限 | 触发部署 |
 | --- | --- | --- | --- |
 | `main` | 稳定分支，始终对应线上站点 | **禁止直推**，必须走 Pull Request | 是 |
-| `dev-fix` | 长期工作分支，日常改动累积在这里 | 可直接推送 | 否 |
+| `agent/dev-fix` | 长期工作分支，日常改动累积在这里 | 可直接推送 | 否 |
 
-`dev-fix` 是长期存在的分支，不要用完即删。改动积累到合适的时机，再开 PR 合入 `main`。
+`agent/dev-fix` 是长期存在的分支，不要用完即删。改动积累到合适的时机，再开 PR 合入 `main`。
 
 ### 为什么这样分工
 
-仓库配置了一条 ruleset 规则：**改动必须通过 Pull Request**。这条规则只作用于 `main`，`dev-fix` 不受影响（已实测确认可以直推）。
+仓库配置了一条 ruleset 规则：**改动必须通过 Pull Request**。这条规则只作用于 `main`，`agent/dev-fix` 不受影响（已实测确认可以直推）。
 
-这样既保留了 `main` 的保护，又不必为每一次小改动都新建临时分支。代价是 `dev-fix` 会比 `main` 领先若干提交，这是正常的。
+这样既保留了 `main` 的保护，又不必为每一次小改动都新建临时分支。代价是 `agent/dev-fix` 会比 `main` 领先若干提交，这是正常的。
 
 ### 一次完整的迭代
 
 ```
-dev-fix  ──●──●──●──●──▶  origin/dev-fix      日常提交，直接推送
+agent/dev-fix  ──●──●──●──●──▶  origin/agent/dev-fix      日常提交，直接推送
               │
               └──PR──▶  main ──▶ Actions ──▶ GitHub Pages
 ```
@@ -45,10 +45,10 @@ npm ci           # 首次必须安装，仓库不含 node_modules
 ```bash
 git clone https://github.com/funlew/funlew.github.io.git
 cd funlew.github.io
-git checkout dev-fix
+git checkout agent/dev-fix
 ```
 
-`dev-fix` 已配置好上游跟踪（`origin/dev-fix`），之后 `git push` 不需要带参数。
+`agent/dev-fix` 已配置好上游跟踪（`origin/agent/dev-fix`），之后 `git push` 不需要带参数。
 
 ---
 
@@ -75,14 +75,14 @@ _config.icarus.yml  主题配置，固定在站点根目录：Hexo 只从根目�
 ### 日常步骤
 
 ```bash
-git checkout dev-fix          # 确保在工作分支上
+git checkout agent/dev-fix          # 确保在工作分支上
 npm run server                # 中文站预览 http://localhost:4000/zh/
 npm run server:en             # 英文站预览 http://localhost:4001/en/（另开一个终端）
 # ...编辑 source/ 下的文件，两个预览都会自动重新拆分并刷新...
 npm run build                 # 完整构建（含双语交叉检查），验证生产环境无报错
 git add -A
 git commit -m "feat: ..."
-git push                     # 直接推送到 dev-fix
+git push                     # 直接推送到 agent/dev-fix
 ```
 
 ### 改动后的验证强度
@@ -167,9 +167,9 @@ chore(deps): bump hexo-pagination from 3.0.0 to 4.0.0
 
 ## 五、发布流程
 
-`dev-fix` 上的改动需要合入 `main` 才会上线：
+`agent/dev-fix` 上的改动需要合入 `main` 才会上线：
 
-1. 打开 https://github.com/funlew/funlew.github.io/compare/main...dev-fix
+1. 打开 https://github.com/funlew/funlew.github.io/compare/main...agent/dev-fix
 2. 创建 Pull Request，填写标题与说明
 3. 合并（建议用 Merge commit 或 Rebase merge，原因见下文）
 4. Actions 自动构建并部署，约 1～2 分钟
@@ -189,7 +189,7 @@ git checkout main
 git reset --hard origin/main
 ```
 
-用了 Merge commit 时，PR 合并后本地 `dev-fix` 仍与远程一致，只需把 `main` 对齐即可继续下一轮迭代。
+用了 Merge commit 时，PR 合并后本地 `agent/dev-fix` 仍与远程一致，只需把 `main` 对齐即可继续下一轮迭代。
 
 ---
 
@@ -199,7 +199,7 @@ git reset --hard origin/main
 
 ### 内容或样式错误（最常见）
 
-在 `dev-fix` 上 `git revert` 掉出问题的提交，照常走一次 PR 合入 `main`：
+在 `agent/dev-fix` 上 `git revert` 掉出问题的提交，照常走一次 PR 合入 `main`：
 
 ```bash
 git revert <commit>
@@ -220,16 +220,16 @@ Actions 页面查看失败原因。若是偶发问题（网络、依赖源抖动
 
 ## 七、分支保护
 
-`main` 已由仓库 ruleset 保护（必须走 PR）。建议为 `dev-fix` 单独配置一条 ruleset，**只限制破坏性操作，不要求 PR**——否则会挡住日常直推。
+`main` 已由仓库 ruleset 保护（必须走 PR）。建议为 `agent/dev-fix` 单独配置一条 ruleset，**只限制破坏性操作，不要求 PR**——否则会挡住日常直推。
 
 在 **Settings → Rules → Rulesets → New ruleset → Create a new branch ruleset** 中配置：
 
 | 配置项 | 取值 |
 | --- | --- |
-| Ruleset Name | `protect-dev-fix` |
+| Ruleset Name | `protect-agent-dev-fix` |
 | Enforcement Status | `Active` |
 | Ruleset Target | `Branch` |
-| Include branches | 勾选 `dev-fix` |
+| Include branches | 勾选 `agent/dev-fix` |
 
 Rules 部分只勾这两项：
 
@@ -240,7 +240,7 @@ Rules 部分只勾这两项：
 
 其余（Require a pull request、Require linear history、Status checks 等）**不要勾选**：
 
-- `Require a pull request` 会让 `dev-fix` 无法直推，与本工作流冲突
+- `Require a pull request` 会让 `agent/dev-fix` 无法直推，与本工作流冲突
 - `Status checks` 需要先为 `main` 配置好 required checks，否则会引入额外阻塞
 
 配置后可以用一次普通推送验证未被误锁：若 `git push` 报错说明规则勾多了，回头检查。
@@ -268,7 +268,7 @@ npm ci
 npm run clean && npm run build
 ```
 
-这些 dependabot 分支基于旧的 `main` 创建，与 `dev-fix` 长期领先不冲突；如遇冲突重新生成即可。
+这些 dependabot 分支基于旧的 `main` 创建，与 `agent/dev-fix` 长期领先不冲突；如遇冲突重新生成即可。
 
 ---
 
@@ -280,16 +280,16 @@ npm run clean && npm run build
 remote: - Changes must be made through a pull request.
 ```
 
-这是 `main` 的 ruleset 在起作用，**不是故障**。改推 `dev-fix`：
+这是 `main` 的 ruleset 在起作用，**不是故障**。改推 `agent/dev-fix`：
 
 ```bash
-git checkout dev-fix
+git checkout agent/dev-fix
 git push
 ```
 
 ### 本地 `main` 领先远程但推不上去
 
-`main` 上累积的提交如果已经存在于 `dev-fix`，把 `main` 对齐远程即可：
+`main` 上累积的提交如果已经存在于 `agent/dev-fix`，把 `main` 对齐远程即可：
 
 ```bash
 git fetch origin
@@ -297,7 +297,7 @@ git checkout main
 git reset --hard origin/main
 ```
 
-提交不会丢失，它们在 `dev-fix` 上。
+提交不会丢失，它们在 `agent/dev-fix` 上。
 
 ### 构建产物与预期不符
 
