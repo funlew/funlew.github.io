@@ -28,8 +28,8 @@
 | --- | --- | --- |
 | 🔗 [REA 是什么：让 AI 智能体做逆向工程的 MCP 服务](https://funlew.github.io/zh/artificial-intelligence/agents/2026-10-16-what-is-rea/) | 人工智能 / 智能体 | 2026-10-16 |
 | 🔗 [Jev 是什么：TypeSafe「系统一模型」的机制、基准与上手路径](https://funlew.github.io/zh/artificial-intelligence/models/2026-10-16-what-is-jev/) | 人工智能 / 模型 | 2026-10-16 |
-| 🔗 [Web3 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/zh/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | 加密行业 / web3转型 | 2026-10-15 |
-| 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/zh/crypto-industry/web3-security/2026-10-15-what-is-immunefi/) | 加密行业 / Web3安全 | 2026-10-15 |
+| 🔗 [Web 3.0 安全赚钱的 5 条路径：门槛、收益与真实差距](https://funlew.github.io/zh/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | 加密行业 / Web 3.0 转型 | 2026-10-15 |
+| 🔗 [Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据](https://funlew.github.io/zh/crypto-industry/web3-security/2026-10-15-what-is-immunefi/) | 加密行业 / Web 3.0 安全 | 2026-10-15 |
 | 🔗 [从登录框到 RCE：Web 渗透测试的 5 层攻击链方法论](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-15-login-to-rce-web-pentest/) | 网络安全 / 漏洞挖掘 | 2026-10-15 |
 | 🔗 [冰山之下：那些没人认领的子域名，正在暴露你的基础设施](https://funlew.github.io/zh/cybersecurity/information-gathering/2026-10-15-subdomain-enumeration-asset-discovery/) | 网络安全 / 信息搜集 | 2026-10-15 |
 | 🔗 [邮箱修改先分配后校验导致的账号接管漏洞](https://funlew.github.io/zh/cybersecurity/vulnerability-research/2026-10-14-email-takeover-race-condition/) | 网络安全 / 漏洞挖掘 | 2026-10-14 |

@@ -3,11 +3,11 @@ title: Immunefi 是什么：Web3 漏洞悬赏平台核心机制与生态数据
 title_en: 'What Is Immunefi: How the Web3 Bug Bounty Platform Works and What the Numbers Say'
 date: 2026-10-15 18:00:00
 categories:
-  - [加密行业, Web3安全]
+  - [加密行业, Web 3.0 安全]
 categories_en:
   - [Crypto Industry, Web3 Security]
 tags:
-  - Web3 安全
+  - Web 3.0 安全
   - 漏洞悬赏
   - Immunefi
   - 智能合约
@@ -112,7 +112,7 @@ Immunefi 工作流的核心是 **PoC（Proof of Concept）共识**——白帽�
 
 ### 4. Whitehat Hall of Fame NFT
 
-每次重要且成功的漏洞报告会铸造一个独一无二的 NFT——白帽可免费保留，也可卖给希望收藏 Web3 安全历史时刻的收藏家。这是平台把「白帽成就」做成**可携带的数字资产**的一种尝试。
+每次重要且成功的漏洞报告会铸造一个独一无二的 NFT——白帽可免费保留，也可卖给希望收藏 Web 3.0 安全历史时刻的收藏家。这是平台把「白帽成就」做成**可携带的数字资产**的一种尝试。
 
 ### 5. 仅限邀请计划
 
