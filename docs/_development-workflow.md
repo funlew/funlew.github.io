@@ -85,6 +85,20 @@ git commit -m "feat: ..."
 git push                     # 直接推送到 agent/dev-fix
 ```
 
+### 快捷指令：保存 / 暂存 / 发布
+
+与 AI 助手协作时，用三个固定指令表示三层逐步递进的 Git 工作流：
+
+| 指令 | 工作流 |
+| --- | --- |
+| **保存** | `git add -A` + `git commit` 到本地 `agent/dev-fix` 分支。不推送、不建 PR、不合并、不部署——改动只留在本地仓库。 |
+| **暂存** | `git add -A` + `git commit`，然后 `git push` 到远程 `agent/dev-fix`。不建 PR、不合并、不部署——改动只保存在远程分支，线上不受影响。 |
+| **发布** | 与「暂存」相同的提交与推送，然后新建 PR（`agent/dev-fix` → `main`）并合并，由 Actions 构建并部署到 GitHub Pages。 |
+
+- 三条指令的 commit message 都按第四节「提交规范」写。
+- 「发布」合并 PR 后确认 Actions 构建成功（见第五节「发布流程」），再继续下一轮迭代。
+- 只做「保存」或「暂存」时，未发布的改动会累积在 `agent/dev-fix` 上，随时可以用「发布」一次性上线。
+
 ### 改动后的验证强度
 
 不同类型的改动，验证要求不同：
@@ -249,7 +263,7 @@ Rules 部分只勾这两项：
 
 ## 八、依赖更新
 
-`.github/dependabot.yml` 每日检查 npm 依赖，会自动开 PR 分支。
+`.github/dependabot.yml` 每周检查 npm 依赖，会自动开 PR 分支。
 
 当前积压了几个大版本升级，合并前务必本地验证：
 

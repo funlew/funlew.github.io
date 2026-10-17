@@ -557,6 +557,6 @@ git push
 
 ### 待处理的依赖升级
 
-`.github/dependabot.yml` 每日检查 npm 更新，目前存在若干待合并的大版本升级分支：`inferno` 8 → 10、`hexo-util` 3 → 4、`hexo-pagination` 3 → 4、`bulma-stylus` 0.8 → 0.9。
+`.github/dependabot.yml` 每周检查 npm 更新，目前存在若干待合并的大版本升级分支：`inferno` 8 → 10、`hexo-util` 3 → 4、`hexo-pagination` 3 → 4、`bulma-stylus` 0.8 → 0.9。
 
 其中 **inferno 8 → 10 风险最高**，主题 JSX 渲染依赖它。合并前务必在本地跑一次 `npm run clean && npm run build` 验证构建结果。
