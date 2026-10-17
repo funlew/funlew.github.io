@@ -10,6 +10,18 @@
 
 ---
 
+## ⚡ 快捷指令
+
+与 AI 助手协作时使用的三个固定指令（详见 [开发流程](./_development-workflow.md)）：
+
+| 指令 | 工作流 |
+| --- | --- |
+| **保存** | `commit` 到本地 `agent/dev-fix` 分支，不推送 |
+| **暂存** | `commit` + `push` 到远程 `agent/dev-fix`，不建 PR |
+| **发布** | `commit` + `push` 到 `agent/dev-fix`，再建 PR 合入 `main` 并部署 |
+
+---
+
 ## 📰 最新文章
 
 | 标题 | 分类 | 日期 |

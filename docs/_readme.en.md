@@ -10,6 +10,18 @@
 
 ---
 
+## ⚡ Shortcuts
+
+Three fixed instructions used when working with the AI assistant (details in the [development workflow](./_development-workflow.md), Chinese):
+
+| Instruction | Workflow |
+| --- | --- |
+| **保存** (save) | Commit to the local `agent/dev-fix` branch, no push |
+| **暂存** (stage) | Commit and push to the remote `agent/dev-fix`, no pull request |
+| **发布** (release) | Commit, push, then open a pull request into `main` and merge it |
+
+---
+
 ## 📰 Recent Posts
 
 | Title | Category | Date |
