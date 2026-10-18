@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
@@ -21,26 +21,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.168.0"
+          extended: true
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      # Builds the Chinese site (public/zh), the English site (public/en), the
-      # language selection page (public/index.html) and the redirects of the
-      # former site root, see tools/build.mjs.
       - name: Build site
-        run: npm run build
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Build search index (Pagefind)
+        run: npx --yes pagefind --site public --output-subdir _pagefind
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

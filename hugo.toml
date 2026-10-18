@@ -1,0 +1,115 @@
+# Hugo 站点配置 · Clean White 主题 · 中英双语
+# 中文位于根路径 /，英文位于 /en/
+# 文档：https://gohugo.io/configuration/all/
+
+baseURL = "https://funlew.github.io/"
+theme = "hugo-theme-cleanwhite"
+
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+
+hasCJKLanguage = true
+timeZone = "Asia/Shanghai"
+enableRobotsTXT = true
+summaryLength = 40
+
+[pagination]
+  pagerSize = 10
+
+# ============================ 共享参数 ============================
+[params]
+  # ---------- 视觉 ----------
+  header_image = "img/home-bg.jpg"        # 首页及未指定封面文章的顶部背景图
+  image_404 = "img/404-bg.jpg"
+  sidebar_avatar = "img/avatar.jpg"
+  dark_mode_toggle = true
+  auto_theme = true
+
+  # ---------- 导航 ----------
+  omit_categories = false                 # 分类入口由主题模板按 taxonomy 自动生成
+
+  # ---------- 侧边栏小部件 ----------
+  about_me = true
+  last_posts = true
+  last_posts_count = 5
+  featured_tags = true
+  featured_condition_size = 0
+  friends = false
+  bookmarks = false
+
+  # ---------- 功能开关 ----------
+  reward = false
+  page_view_counter = false
+  algolia_search = false                  # 关闭 Algolia，搜索页使用 Pagefind（构建后生成索引）
+  upstreamAttribution = true
+
+  [params.social]
+    rss = true
+    github = "https://github.com/funlew"
+
+# ============================ 语言 ============================
+[languages]
+  [languages.zh]
+    label = "中文"
+    locale = "zh-CN"
+    weight = 1
+    title = "funlew 的博客"
+
+    [languages.zh.params]
+      SEOTitle = "funlew 的博客 | 记录技术、开源与生活"
+      description = "记录技术、开源与生活"
+      keyword = "funlew, 博客, 技术, 开源, 生活, 网络安全, Web3"
+      slogan = "stay hungry, stay foolish"
+      sidebar_about_description = "记录技术、开源与生活"
+      title_404 = "你来到了没有知识的荒原 :("
+
+      [[languages.zh.params.additional_menus]]
+        title = "归档"
+        href = "/archive"
+      [[languages.zh.params.additional_menus]]
+        title = "关于"
+        href = "/about"
+
+  [languages.en]
+    label = "English"
+    locale = "en-US"
+    weight = 2
+    title = "funlew's Blog"
+
+    [languages.en.params]
+      SEOTitle = "funlew's Blog | Notes on Tech, Open Source and Life"
+      description = "Notes on tech, open source and everyday life"
+      keyword = "funlew, blog, technology, open source, life, cybersecurity, web3"
+      slogan = "stay hungry, stay foolish"
+      sidebar_about_description = "Notes on tech, open source and everyday life"
+      title_404 = "You have reached the wasteland of no knowledge :("
+
+      [[languages.en.params.additional_menus]]
+        title = "ARCHIVE"
+        href = "/archive"
+      [[languages.en.params.additional_menus]]
+        title = "ABOUT"
+        href = "/about"
+
+# ============================ Markdown 渲染 ============================
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 2
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true                       # 允许文章内嵌原生 HTML
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[mediaTypes.'font/woff']
+  suffixes = ['woff']
+[mediaTypes.'font/woff2']
+  suffixes = ['woff2']

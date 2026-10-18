@@ -1,3 +1,0 @@
-require: test/support/mocha-setup.js
-timeout: 20000
-reporter: spec

@@ -1,0 +1,15 @@
+{{- $page := . -}}
+{{- range hugo.Sites -}}
+  {{- $site := . -}}
+  {{- if ne $site.Language.Lang $page.Site.Language.Lang -}}
+    {{- $target := $site.Home -}}
+    {{- range $page.AllTranslations -}}
+      {{- if eq .Language.Lang $site.Language.Lang -}}
+        {{- $target = . -}}
+      {{- end -}}
+    {{- end -}}
+    <li>
+      <a href="{{ $target.RelPermalink }}">{{ $site.Language.Label }}</a>
+    </li>
+  {{- end -}}
+{{- end -}}

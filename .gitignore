@@ -1,9 +1,12 @@
+# Hugo 构建产物（Pagefind 索引也生成在 public/ 内）
+/public/
+/resources/
+.hugo_build.lock
+
+# 本地预览用的搜索索引副本（由 pagefind 生成后手工放入，不提交）
+/static/_pagefind/
+
+# 系统文件
 .DS_Store
 Thumbs.db
-db.json
 *.log
-node_modules/
-public/
-.build/
-.deploy*/
-_multiconfig.yml
