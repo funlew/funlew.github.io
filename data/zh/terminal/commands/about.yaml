@@ -1,0 +1,14 @@
+name: about
+label: About
+description: 关于我
+quick: true
+weight: 10
+greeting: Hello, World!
+person_name: "funlew"
+summary: 一个喜欢折腾代码、关注安全与效率的开发者。
+details:
+  - 这里记录我在网络安全、Web3 与人工智能方向的学习笔记，以及日常的工程与开源实践。
+  - 中文为默认语言，英文版本在 /en/ 下，可在页面右上角切换。
+quote:
+  text: stay hungry, stay foolish
+  author: funlew

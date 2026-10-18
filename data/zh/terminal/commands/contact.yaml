@@ -1,0 +1,11 @@
+name: contact
+label: Contact
+description: 联系方式
+quick: true
+weight: 50
+intro: 想交流技术、开源或博客内容，可以通过下面的方式找到我。
+links:
+  - label: GitHub
+    text: https://github.com/funlew
+    url: https://github.com/funlew
+outro: 也欢迎在 GitHub 上提 issue 或发 PR。

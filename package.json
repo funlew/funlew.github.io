@@ -1,41 +1,17 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "funlew-blog",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "node tools/build.mjs",
-    "clean": "node tools/build.mjs clean",
-    "deploy": "hexo deploy",
-    "prepare:i18n": "node tools/prepare-i18n.mjs",
-    "server": "node tools/build.mjs serve zh",
-    "server:en": "node tools/build.mjs serve en"
-  },
-  "hexo": {
-    "version": "8.1.2"
+    "dev": "hugo --renderToMemory && hugo server --buildDrafts --watch",
+    "build": "hugo --renderToMemory && hugo --minify --gc --cleanDestinationDir",
+    "search": "npx --yes pagefind --site public --output-subdir _pagefind"
   },
   "dependencies": {
-    "bulma-stylus": "0.8.0",
-    "deepmerge": "^4.3.1",
-    "hexo": "^8.0.0",
-    "hexo-component-inferno": "^3.1.2",
-    "hexo-front-matter": "^4.2.1",
-    "hexo-deployer-git": "^4.0.0",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-feed": "^4.0.0",
-    "hexo-generator-index": "^4.0.0",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-log": "^4.1.0",
-    "hexo-pagination": "^3.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-inferno": "^1.0.2",
-    "hexo-renderer-marked": "^7.0.0",
-    "hexo-renderer-stylus": "^3.0.1",
-    "hexo-server": "^3.0.0",
-    "hexo-util": "^3.3.0",
-    "inferno": "^8.2.3",
-    "inferno-create-element": "^8.2.3",
-    "moment": "^2.31.0",
-    "semver": "^7.8.5"
+    "@tailwindcss/cli": "^4.3.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "alpinejs": "^3.15.12",
+    "tailwindcss": "^4.3.0"
   }
 }

@@ -1,0 +1,15 @@
+# UI strings for the English site
+skip_to_content = "Skip to main content"
+previous_post = "Previous Post"
+next_post = "Next Post"
+on_this_page = "ON THIS PAGE"
+recent_posts = "Recent Posts"
+min_read_unit = "min read"
+read_more = "Read"
+no_posts = "No posts found yet."
+terminal_im = "I'm"
+switch_to_light = "Switch to Light Mode"
+switch_to_dark = "Switch to Dark Mode"
+
+[footer_copyright]
+other = "© {{ .year }} {{ .title }}. Built with Hugo, Tailwind CSS, and Alpine.js."

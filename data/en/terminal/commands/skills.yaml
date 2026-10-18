@@ -1,0 +1,29 @@
+name: skills
+label: Skills
+description: My technical stack
+quick: true
+weight: 20
+categories:
+  - key: security
+    items:
+      - Penetration Testing
+      - Subdomain Enumeration
+      - Race Conditions
+      - Code Review
+  - key: web3
+    items:
+      - Smart Contracts
+      - Bug Bounty
+      - Security Audit
+  - key: engineering
+    items:
+      - Go
+      - JavaScript
+      - Git
+      - Docker
+      - Linux
+  - key: tooling
+    items:
+      - Hugo
+      - Tailwind CSS
+      - GitHub Actions

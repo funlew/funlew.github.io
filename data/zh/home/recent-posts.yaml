@@ -1,0 +1,7 @@
+id: recent-posts
+type: recent-posts
+icon: article
+title: 最新文章
+limit: 6
+section: posts
+view_all_label: 查看全部 ->

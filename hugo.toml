@@ -1,0 +1,92 @@
+# Hugo 站点配置 · Nerdy 主题 · 中英双语
+# 中文位于 /，英文位于 /en/
+# 文档：https://gohugo.io/configuration/all/
+
+baseURL = "https://funlew.github.io/"
+theme = "nerdy"
+
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+
+hasCJKLanguage = true
+timeZone = "Asia/Shanghai"
+enableRobotsTXT = true
+
+# Nerdy 首页与侧边栏由 data 文件驱动，文章的 tags 只作展示用，不生成 taxonomy 页面
+disableKinds = ["taxonomy", "term"]
+
+# 允许 Hugo 调用 Tailwind CLI 编译主题样式
+[security.exec]
+  allow = [
+    '^(dart-)?sass$',
+    '^go$',
+    '^git$',
+    '^node$',
+    '^npx$',
+    '^postcss$',
+    '^tailwindcss$',
+  ]
+
+# Tailwind 需要 hugo_stats.json 才能发现模板里生成的类名
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = "css"
+  [[build.cachebusters]]
+    source = "(postcss|tailwind)\\.config\\.(js|mjs|ts)"
+    target = "css"
+
+[module]
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/notwatching/hugo_stats.json"
+    disableWatch = true
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark.renderer]
+    unsafe = true                       # 允许文章内嵌原生 HTML
+
+# ============================ 语言 ============================
+[languages]
+  [languages.zh]
+    label = "中文"
+    locale = "zh-CN"
+    weight = 1
+    title = "funlew 的博客"
+
+    [languages.zh.params]
+      description = "记录技术、开源与生活"
+
+    [[languages.zh.menus.main]]
+      name = "文章"
+      url = "/posts/"
+      weight = 1
+    [[languages.zh.menus.main]]
+      name = "关于"
+      url = "/about/"
+      weight = 2
+
+  [languages.en]
+    label = "English"
+    locale = "en-US"
+    weight = 2
+    title = "funlew's Blog"
+
+    [languages.en.params]
+      description = "Notes on tech, open source and everyday life"
+
+    [[languages.en.menus.main]]
+      name = "Posts"
+      url = "/posts/"
+      weight = 1
+    [[languages.en.menus.main]]
+      name = "About"
+      url = "/about/"
+      weight = 2

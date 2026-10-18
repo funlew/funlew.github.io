@@ -1,0 +1,15 @@
+# 站点覆盖的界面文案（主题内置的其余英文文案尚未逐一翻译）
+skip_to_content = "跳到主要内容"
+previous_post = "上一篇"
+next_post = "下一篇"
+on_this_page = "本页目录"
+recent_posts = "最新文章"
+min_read_unit = "分钟阅读"
+read_more = "阅读"
+no_posts = "暂无文章"
+terminal_im = "我是"
+switch_to_light = "切换到浅色模式"
+switch_to_dark = "切换到深色模式"
+
+[footer_copyright]
+other = "© {{ .year }} {{ .title }}。由 Hugo、Tailwind CSS 与 Alpine.js 构建。"

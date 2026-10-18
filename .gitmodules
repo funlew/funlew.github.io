@@ -1,0 +1,3 @@
+[submodule "themes/nerdy"]
+	path = themes/nerdy
+	url = https://github.com/hugo-themes/nerdy.git

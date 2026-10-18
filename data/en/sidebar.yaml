@@ -1,0 +1,42 @@
+profile:
+  name: "funlew"
+  title: Developer · Open Source Enthusiast
+  avatar: "images/avatar.jpg"
+  description: Notes on tech, open source and everyday life.
+  status:
+    label: Status
+    value: Updating regularly
+    preference_label: Pref
+    preference: Tech / OSS / Notes
+  links:
+    - icon: github
+      label: github.com/funlew
+      url: https://github.com/funlew
+
+sections:
+  - id: profile-stats
+    type: stats
+    title: Site Stats
+    items:
+      - label: Posts
+        value: "8"
+        accent: emerald
+      - label: Languages
+        value: ZH / EN
+        accent: cyan
+      - label: Focus
+        value: Security · Web3
+        accent: amber
+      - label: Theme
+        value: Nerdy
+        accent: purple
+  - id: focus-areas
+    type: tags
+    title: Focus Areas
+    items:
+      - Cybersecurity
+      - Web3 Security
+      - Artificial Intelligence
+      - Engineering
+      - Open Source
+      - Notes

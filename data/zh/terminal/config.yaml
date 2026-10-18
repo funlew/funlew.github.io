@@ -1,0 +1,16 @@
+user: guest
+host: funlew
+directory: "~"
+window_title: "guest@funlew:~"
+auto_command: about
+builtins:
+  - name: clear
+    description: 清空终端输出
+  - name: whoami
+    description: 显示当前用户
+  - name: date
+    description: 显示当前日期
+  - name: echo
+    description: 回显输入内容
+  - name: sudo
+    description: 尝试提权

@@ -1,0 +1,11 @@
+name: contact
+label: Contact
+description: How to reach me
+quick: true
+weight: 50
+intro: For anything about tech, open source or this blog, reach out below.
+links:
+  - label: GitHub
+    text: https://github.com/funlew
+    url: https://github.com/funlew
+outro: Issues and pull requests are always welcome.

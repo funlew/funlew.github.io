@@ -1,0 +1,29 @@
+name: skills
+label: Skills
+description: 常用技术栈
+quick: true
+weight: 20
+categories:
+  - key: 安全
+    items:
+      - 渗透测试
+      - 子域名枚举
+      - 竞态条件
+      - 代码审计
+  - key: web3
+    items:
+      - 智能合约
+      - 漏洞赏金
+      - 安全审计
+  - key: 工程
+    items:
+      - Go
+      - JavaScript
+      - Git
+      - Docker
+      - Linux
+  - key: 工具
+    items:
+      - Hugo
+      - Tailwind CSS
+      - GitHub Actions

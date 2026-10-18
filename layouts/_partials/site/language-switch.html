@@ -1,0 +1,19 @@
+{{- $page := . -}}
+{{- $current := $page.Site.Language.Lang -}}
+{{- range hugo.Sites -}}
+  {{- $site := . -}}
+  {{- if ne $site.Language.Lang $current -}}
+    {{- $target := $site.Home -}}
+    {{- range $page.AllTranslations -}}
+      {{- if eq .Language.Lang $site.Language.Lang -}}
+        {{- $target = . -}}
+      {{- end -}}
+    {{- end -}}
+    <a
+      class="nerdy-icon-button"
+      href="{{ $target.RelPermalink }}"
+      title="{{ $site.Language.Label }}"
+      aria-label="{{ $site.Language.Label }}"
+    >{{ $site.Language.Label }}</a>
+  {{- end -}}
+{{- end -}}

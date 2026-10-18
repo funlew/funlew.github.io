@@ -1,0 +1,15 @@
+name: about
+label: About
+description: Information about me
+quick: true
+weight: 10
+greeting: Hello, World!
+person_name: "funlew"
+summary: A developer who likes tinkering with code, security and efficiency.
+details:
+  - Notes on cybersecurity, Web3 and artificial intelligence, plus everyday engineering
+    and open source practice.
+  - English lives under /en/; switch languages with the button at the top right.
+quote:
+  text: stay hungry, stay foolish
+  author: funlew

@@ -1,0 +1,42 @@
+profile:
+  name: "funlew"
+  title: 开发者 · 开源爱好者
+  avatar: "images/avatar.jpg"
+  description: 记录技术、开源与生活。
+  status:
+    label: 状态
+    value: 持续更新中
+    preference_label: 偏好
+    preference: 技术 / 开源 / 随笔
+  links:
+    - icon: github
+      label: github.com/funlew
+      url: https://github.com/funlew
+
+sections:
+  - id: profile-stats
+    type: stats
+    title: 站点概览
+    items:
+      - label: 文章
+        value: 8 篇
+        accent: emerald
+      - label: 语言
+        value: 中 / 英
+        accent: cyan
+      - label: 方向
+        value: 安全 · Web3
+        accent: amber
+      - label: 主题
+        value: Nerdy
+        accent: purple
+  - id: focus-areas
+    type: tags
+    title: 关注方向
+    items:
+      - 网络安全
+      - Web3 安全
+      - 人工智能
+      - 工程实践
+      - 开源
+      - 随笔

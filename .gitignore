@@ -1,9 +1,15 @@
+# Hugo 构建产物
+/public/
+/resources/
+.hugo_build.lock
+
+# Tailwind 需要的类名统计（构建时生成）
+hugo_stats.json
+
+# Node 依赖
+node_modules/
+
+# 系统文件
 .DS_Store
 Thumbs.db
-db.json
 *.log
-node_modules/
-public/
-.build/
-.deploy*/
-_multiconfig.yml
