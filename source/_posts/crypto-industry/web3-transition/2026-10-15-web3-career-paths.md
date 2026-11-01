@@ -1,13 +1,13 @@
 ---
-title: Web3 安全赚钱的 5 条路径：门槛、收益与真实差距
+title: Web 3.0 安全赚钱的 5 条路径：门槛、收益与真实差距
 title_en: '5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap'
 date: 2026-10-15 19:00:00
 categories:
-  - [加密行业, web3转型]
+  - [加密行业, Web 3.0 转型]
 categories_en:
   - [Crypto Industry, Web3 Transition]
 tags:
-  - Web3 安全
+  - Web 3.0 安全
   - 白帽黑客
   - 漏洞赏金
   - 审计竞赛
@@ -26,11 +26,11 @@ thumbnail: /_attach/crypto-industry/web3-transition/2026-10-15-web3-career-paths
 
 <div class="lang-block" data-lang="zh-CN" lang="zh-CN">
 
-上一篇文章拆了 Immunefi 的机制，但没回答一个更实际的问题：**普通人怎么从 Web3 安全里赚到钱？**
+上一篇文章拆了 Immunefi 的机制，但没回答一个更实际的问题：**普通人怎么从 Web 3.0 安全里赚到钱？**
 
 搜索过程中我把这个生态摊开看了一遍，发现最常见的误解是把所有平台当成同一类。实际上门槛和收益结构差别极大——审计竞赛里新手几千美元能拿到手，漏洞赏金里一个 Critical 漏洞可能直接七位数；而审计服务的收入结构和前两者完全不同。
 
-本文把 Web3 安全的 5 条变现路径摊开对比，附上可核实的门槛与收益区间。**收益数字来自公开资料与平台公开数据，不是收入承诺**——真实收入高度依赖能力、运气与市场周期。
+本文把 Web 3.0 安全的 5 条变现路径摊开对比，附上可核实的门槛与收益区间。**收益数字来自公开资料与平台公开数据，不是收入承诺**——真实收入高度依赖能力、运气与市场周期。
 
 <!-- more -->
 
