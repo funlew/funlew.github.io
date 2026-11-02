@@ -263,7 +263,7 @@ Rules 部分只勾这两项：
 
 ## 八、依赖更新
 
-`.github/dependabot.yml` 每周检查 npm 依赖，会自动开 PR 分支。
+`.github/dependabot.yml` 的 `open-pull-requests-limit` 设为 `0`，自动检查与自动开 PR 均已停用。需要升级依赖时手动检查（`npm outdated`），自己建分支验证。
 
 当前积压了几个大版本升级，合并前务必本地验证：
 
@@ -282,7 +282,7 @@ npm ci
 npm run clean && npm run build
 ```
 
-这些 dependabot 分支基于旧的 `main` 创建，与 `agent/dev` 长期领先不冲突；如遇冲突重新生成即可。
+此前 dependabot 生成的分支基于旧的 `main`，与 `agent/dev` 长期领先不冲突；如遇冲突重新生成即可。
 
 ---
 
