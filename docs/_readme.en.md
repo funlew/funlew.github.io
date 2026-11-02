@@ -26,6 +26,7 @@ Three fixed instructions used when working with the AI assistant (details in the
 
 | Title | Category | Date |
 | --- | --- | --- |
+| 🔗 [The Coordinator Without Authority: Three Levers That Turn a Favor Into Their Own Deliverable](https://funlew.github.io/en/project-management/team-management/2026-11-02-coordination-without-authority/) | Project Management / Team Management | 2026-11-02 |
 | 🔗 [What Is REA: An MCP Service That Lets AI Agents Reverse Engineer Anything](https://funlew.github.io/en/artificial-intelligence/agents/2026-10-16-what-is-rea/) | Artificial Intelligence / Agents | 2026-10-16 |
 | 🔗 [What Is Jev: How TypeSafe's System One Model Works, What It Costs and How to Try It](https://funlew.github.io/en/artificial-intelligence/models/2026-10-16-what-is-jev/) | Artificial Intelligence / Models | 2026-10-16 |
 | 🔗 [5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap](https://funlew.github.io/en/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | Crypto Industry / Web3 Transition | 2026-10-15 |

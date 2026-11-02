@@ -26,6 +26,7 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
+| 🔗 [没有实权的协调者：把「帮个忙」变成「他的事」的三个杠杆](https://funlew.github.io/zh/project-management/team-management/2026-11-02-coordination-without-authority/) | 项目管理 / 团队管理 | 2026-11-02 |
 | 🔗 [团队管理中的一致性：为什么同一条规则会执行出三种结果](https://funlew.github.io/zh/project-management/team-management/2026-11-01-consistency-in-team-management/) | 项目管理 / 团队管理 | 2026-11-01 |
 | 🔗 [REA 是什么：让 AI 智能体做逆向工程的 MCP 服务](https://funlew.github.io/zh/artificial-intelligence/agents/2026-10-16-what-is-rea/) | 人工智能 / 智能体 | 2026-10-16 |
 | 🔗 [Jev 是什么：TypeSafe「系统一模型」的机制、基准与上手路径](https://funlew.github.io/zh/artificial-intelligence/models/2026-10-16-what-is-jev/) | 人工智能 / 模型 | 2026-10-16 |
