@@ -4,7 +4,7 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
-  open-pull-requests-limit: 20
+  open-pull-requests-limit: 0
   ignore:
     # hexo-theme-icarus validates its dependencies against its own package.json
     # before generating and calls process.exit() when one does not satisfy the
