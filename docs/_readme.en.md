@@ -5,7 +5,7 @@
 | Document | Contents |
 | --- | --- |
 | [📝 Publishing guide](./_publishing-guide.md) | Write a post and get it online: directory conventions, front-matter fields, body syntax, local preview, publishing and rollback (Chinese) |
-| [🛠️ Development workflow](./_development-workflow.md) | Branch model (`agent/dev-fix` work branch / `main` deploy branch), commit conventions, verification requirements, branch protection, dependency updates (Chinese) |
+| [🛠️ Development workflow](./_development-workflow.md) | Branch model (`agent/dev` work branch / `main` deploy branch), commit conventions, verification requirements, branch protection, dependency updates (Chinese) |
 | [📋 Changelog](./_changelog.md) | Improvement notes and completed changes, one dated section per entry, newest first (Chinese) |
 
 ---
@@ -16,8 +16,8 @@ Three fixed instructions used when working with the AI assistant (details in the
 
 | Instruction | Workflow |
 | --- | --- |
-| **保存** (save) | Commit to the local `agent/dev-fix` branch, no push |
-| **暂存** (stage) | Commit and push to the remote `agent/dev-fix`, no pull request |
+| **保存** (save) | Commit and push to the remote `agent/dev`, no pull request |
+| **暂存** (stage) | Commit to the local `agent/dev` branch, no push |
 | **发布** (release) | Commit, push, then open a pull request into `main` and merge it |
 
 ---
@@ -26,6 +26,7 @@ Three fixed instructions used when working with the AI assistant (details in the
 
 | Title | Category | Date |
 | --- | --- | --- |
+| 🔗 [The Coordinator Without Authority: Three Levers That Turn a Favor Into Their Own Deliverable](https://funlew.github.io/en/project-management/team-management/2026-11-02-coordination-without-authority/) | Project Management / Team Management | 2026-11-02 |
 | 🔗 [What Is REA: An MCP Service That Lets AI Agents Reverse Engineer Anything](https://funlew.github.io/en/artificial-intelligence/agents/2026-10-16-what-is-rea/) | Artificial Intelligence / Agents | 2026-10-16 |
 | 🔗 [What Is Jev: How TypeSafe's System One Model Works, What It Costs and How to Try It](https://funlew.github.io/en/artificial-intelligence/models/2026-10-16-what-is-jev/) | Artificial Intelligence / Models | 2026-10-16 |
 | 🔗 [5 Ways to Earn in Web3 Security: Barriers, Payouts and the Real Gap](https://funlew.github.io/en/crypto-industry/web3-transition/2026-10-15-web3-career-paths/) | Crypto Industry / Web3 Transition | 2026-10-15 |
@@ -44,7 +45,7 @@ Node.js 22 is required (same as CI):
 ```bash
 git clone https://github.com/funlew/funlew.github.io.git
 cd funlew.github.io
-git checkout agent/dev-fix
+git checkout agent/dev
 npm ci
 ```
 
