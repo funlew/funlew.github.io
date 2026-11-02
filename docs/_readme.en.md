@@ -5,7 +5,7 @@
 | Document | Contents |
 | --- | --- |
 | [📝 Publishing guide](./_publishing-guide.md) | Write a post and get it online: directory conventions, front-matter fields, body syntax, local preview, publishing and rollback (Chinese) |
-| [🛠️ Development workflow](./_development-workflow.md) | Branch model (`agent/dev-fix` work branch / `main` deploy branch), commit conventions, verification requirements, branch protection, dependency updates (Chinese) |
+| [🛠️ Development workflow](./_development-workflow.md) | Branch model (`agent/dev` work branch / `main` deploy branch), commit conventions, verification requirements, branch protection, dependency updates (Chinese) |
 | [📋 Changelog](./_changelog.md) | Improvement notes and completed changes, one dated section per entry, newest first (Chinese) |
 
 ---
@@ -16,8 +16,8 @@ Three fixed instructions used when working with the AI assistant (details in the
 
 | Instruction | Workflow |
 | --- | --- |
-| **保存** (save) | Commit to the local `agent/dev-fix` branch, no push |
-| **暂存** (stage) | Commit and push to the remote `agent/dev-fix`, no pull request |
+| **保存** (save) | Commit and push to the remote `agent/dev`, no pull request |
+| **暂存** (stage) | Commit to the local `agent/dev` branch, no push |
 | **发布** (release) | Commit, push, then open a pull request into `main` and merge it |
 
 ---
@@ -45,7 +45,7 @@ Node.js 22 is required (same as CI):
 ```bash
 git clone https://github.com/funlew/funlew.github.io.git
 cd funlew.github.io
-git checkout agent/dev-fix
+git checkout agent/dev
 npm ci
 ```
 

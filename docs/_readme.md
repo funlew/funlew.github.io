@@ -5,7 +5,7 @@
 | 标题 | 内容 |
 | --- | --- |
 | [📝 发布流程](./_publishing-guide.md) | 写一篇新文章并让它上线：目录约定、front-matter 字段、正文写法、本地预览、发布与回滚 |
-| [🛠️ 开发流程](./_development-workflow.md) | 分支模型（`agent/dev-fix` 工作分支 / `main` 部署分支）、提交规范、验证要求、分支保护、依赖升级 |
+| [🛠️ 开发流程](./_development-workflow.md) | 分支模型（`agent/dev` 工作分支 / `main` 部署分支）、提交规范、验证要求、分支保护、依赖升级 |
 | [📋 变更记录](./_changelog.md) | 改进建议与已完成的变更，按时间戳分节记录，最新的在最上面 |
 
 ---
@@ -16,9 +16,9 @@
 
 | 指令 | 工作流 |
 | --- | --- |
-| **保存** | `commit` 到本地 `agent/dev-fix` 分支，不推送 |
-| **暂存** | `commit` + `push` 到远程 `agent/dev-fix`，不建 PR |
-| **发布** | `commit` + `push` 到 `agent/dev-fix`，再建 PR 合入 `main` 并部署 |
+| **保存** | `commit` + `push` 到远程 `agent/dev`，不建 PR |
+| **暂存** | `commit` 到本地 `agent/dev` 分支，不推送 |
+| **发布** | `commit` + `push` 到 `agent/dev`，再建 PR 合入 `main` 并部署 |
 
 ---
 
@@ -47,7 +47,7 @@
 ```bash
 git clone https://github.com/funlew/funlew.github.io.git
 cd funlew.github.io
-git checkout agent/dev-fix
+git checkout agent/dev
 npm ci
 ```
 
