@@ -154,6 +154,8 @@ thumbnail: /_attach/project-management/team-management/2026-11-01-consistency-in
 
 > 文中涉及的「程序公平」与「心理契约」是组织行为学的成熟概念：前者关注决策过程是否一致、是否可申诉（Greenberg 的程序公平研究），后者关注员工对互惠义务的隐性预期（Rousseau）。它们解释的是同一件事——人对一致性的敏感，往往高于对结果高低的敏感。
 
+封面图片：Ryan McGuire / [Gratisography](https://gratisography.com/)（免版权，可商用，无需署名）。
+
 </div>
 
 <div class="lang-block" data-lang="en" lang="en">
@@ -287,5 +289,7 @@ Consistency doesn't make a team tidy; it makes a team willing to bet. When peopl
 A system earns its value not by reading well, but by **making every execution cheaper than the last**. Every unrecorded exception, on the other hand, is interest charged to the organization.
 
 > The two ideas referenced here — procedural justice and the psychological contract — are established concepts in organizational behavior. The first concerns whether decision processes are consistent and appealable (Greenberg's work on procedural justice); the second concerns employees' implicit expectations of reciprocal obligation (Rousseau). Both explain the same thing: people are often more sensitive to consistency than to the size of the outcome.
+
+Cover photo: Ryan McGuire / [Gratisography](https://gratisography.com/) (royalty-free, free for commercial use, no attribution required).
 
 </div>
