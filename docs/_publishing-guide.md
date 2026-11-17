@@ -157,6 +157,10 @@ source/_attach/
 | Web 3.0 安全 | `web3-security` |
 | Web 3.0 转型 | `web3-transition` |
 | 日常随笔 | `daily-notes` |
+| 项目管理 | `project-management` |
+| 团队管理 | `team-management` |
+| 职业成长 | `career-growth` |
+| 执行力 | `execution` |
 
 **新增分类时**：先在 `_posts` 和 `_attach` 下建同名英文目录，再在文章 front-matter 的 `categories` 里填中文分类名。两者要对应。
 
