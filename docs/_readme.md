@@ -26,6 +26,7 @@
 
 | 标题 | 分类 | 日期 |
 | --- | --- | --- |
+| 🔗 [「让人看见」的陷阱：存在感不是喊出来的，是攒出来的](https://funlew.github.io/zh/career-growth/execution/2026-11-17-presence-is-built/) | 职业成长 / 执行力 | 2026-11-17 |
 | 🔗 [「城府」不是沉默：别让管理者的情绪成为团队的规则](https://funlew.github.io/zh/project-management/team-management/2026-11-05-manager-reaction-patterns/) | 项目管理 / 团队管理 | 2026-11-05 |
 | 🔗 [没有实权的协调者：把「帮个忙」变成「他的事」的三个杠杆](https://funlew.github.io/zh/project-management/team-management/2026-11-02-coordination-without-authority/) | 项目管理 / 团队管理 | 2026-11-02 |
 | 🔗 [团队管理中的一致性：为什么同一条规则会执行出三种结果](https://funlew.github.io/zh/project-management/team-management/2026-11-01-consistency-in-team-management/) | 项目管理 / 团队管理 | 2026-11-01 |
